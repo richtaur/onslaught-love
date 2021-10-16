@@ -106,7 +106,8 @@ function love.update(dt)
     player.x = player.x + playerOffset
   end
 
-  -- Actor animation
-  player.update(dt)
-  goblin.update(dt)
+  -- Actor animations
+  for actorId, actor in pairs(actors) do
+    actor.update(dt)
+  end
 end

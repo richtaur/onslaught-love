@@ -7,6 +7,7 @@
 - click to spawn goblin
 	- detect click
 	- spawn goblin
+
 - add env collision / limits
 - press space to spawn weapon
 	- move

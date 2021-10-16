@@ -1,5 +1,5 @@
 actors = {}
-actorId = 0;
+local actorId = 0;
 
 makeActor = function(actorData)
 	actorId = actorId + 1
