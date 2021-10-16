@@ -1,3 +1,5 @@
+require("actor")
+
 -- Constants (fake)
 SCREEN_WIDTH = 1024
 SCREEN_HEIGHT = 768
@@ -9,7 +11,7 @@ charactersSmallFrames = {}
 paused = false
 text = "Centered Text Hi"
 
-require("player")
+player = makeActor()
 
 -- Functions ...
 keyIsDown = love.keyboard.isDown
@@ -22,7 +24,7 @@ function love.load()
   charactersSmallImage = love.graphics.newImage("images/sheet_characters_small.png")
 	charactersSmallFrames[1] = love.graphics.newQuad(8 * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE, charactersSmallImage:getDimensions())
 	charactersSmallFrames[2] = love.graphics.newQuad(9 * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE, charactersSmallImage:getDimensions())
-	charactersSmallFrame = charactersSmallFrames[player.frameNumber]
+	player.frame = charactersSmallFrames[player.frameNumber]
 
   -- Sound effect?
   -- sound = love.audio.newSource("sounds/monster_damage", "stream")
@@ -32,7 +34,7 @@ function love.load()
 
   -- Music
   sewersMusic = love.audio.newSource("music/sewers.mp3", "stream")
-  love.audio.play(sewersMusic)
+  -- love.audio.play(sewersMusic)
 end
 
 function love.draw()
@@ -40,7 +42,7 @@ function love.draw()
 
   -- love.graphics.draw(charactersSmallImage, 0, 0)
   -- Draw player
-  love.graphics.draw(charactersSmallImage, charactersSmallFrame, player.x, player.y)
+  love.graphics.draw(charactersSmallImage, player.frame, player.x, player.y)
 
   love.graphics.print(text, MARGIN, SCREEN_HEIGHT - (MARGIN * 2))
 
@@ -95,7 +97,7 @@ function love.update(dt)
     if player.frameNumber > 2 then
       player.frameNumber = 1
     end
-    charactersSmallFrame = charactersSmallFrames[player.frameNumber]
+    player.frame = charactersSmallFrames[player.frameNumber]
   end
 
 end
