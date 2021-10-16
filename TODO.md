@@ -1,7 +1,9 @@
 # TODO
 
 + present text
-- present sprites
++ present sprites
+	- draw sprite rect from sheet
+	- animate
 - detect keyboard input
 - play a sound
 - play music
