@@ -1,12 +1,13 @@
-require("actor")
-require("actorData")
-require("vector")
-
 -- Constants (fake)
 SCREEN_WIDTH = 1024
 SCREEN_HEIGHT = 768
 MARGIN = 16
 TILE_SIZE = 32
+
+require("actor")
+require("actorData")
+require("toolbox")
+require("vector")
 
 -- Setup
 charactersSmallFrames = {}

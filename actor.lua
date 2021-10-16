@@ -18,6 +18,7 @@ makeActor = function(data, team)
 
 	-- Apply actor data
 	actor.behavior = data.behavior
+	actor.behaviorConfig = data.behaviorConfig
 	actor.frameMin = data.frameMin
 	actor.frameMax = data.frameMax
 	actor.frameNumber = actor.frameMin

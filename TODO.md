@@ -6,9 +6,10 @@
 		+ add movementVector
 		+ use for player input
 		+ use for chase behavior
-	- add proximity
+	+ add proximity
 		- min
-		- max
+		+ max
+	- smoother movement ramp
 
 - add env collision / limits
 - press space to spawn weapon
