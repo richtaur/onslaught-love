@@ -115,6 +115,8 @@ function love.mousepressed (x, y, button, istouch, presses)
 	actor.x = tileX * TILE_SIZE
 	actor.y = tileY * TILE_SIZE
 	actor.frame = charactersSmallFrames[actor.frameNumber]
+
+	sounds.play("wizardReappear")
 end
 
 function love.update (dt)
