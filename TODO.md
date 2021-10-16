@@ -1,7 +1,7 @@
 # TODO
 
-- spawn weapon
-	- add velocity
++ spawn weapon
+	+ add velocity
 		- actorData.speed
 	- use arrow keys to spawn weapon
 		- add cooldown
