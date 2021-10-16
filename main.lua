@@ -34,13 +34,7 @@ function love.load()
     end
   end
 
-	-- charactersSmallFrames[1] = love.graphics.newQuad(8 * TILE_SIZE, 0, TILE_SIZE, TILE_SIZE, charactersSmallImage:getDimensions())
-	-- charactersSmallFrames[2] = love.graphics.newQuad(9 * TILE_SIZE, 0, TILE_SIZE, TILE_SIZE, charactersSmallImage:getDimensions())
-
 	player.frame = charactersSmallFrames[player.frameNumber]
-
-  -- Sound effect?
-  -- sound = love.audio.newSource("sounds/monster_damage", "stream")
 
   -- Sounds
   monsterDamageSound = love.audio.newSource("sounds/monster_damage.mp3", "static")
@@ -80,8 +74,31 @@ function love.keypressed(key)
     end
   end
 
+  -- Projectiles
+  local aimVector = makeVector(0, 0)
+  if key == "left" then
+    aimVector.x = -1
+  elseif key == "right" then
+    aimVector.x = 1
+  end
+  if key == "up" then
+    aimVector.y = -1
+  elseif key == "down" then
+    aimVector.y = 1
+  end
+  if aimVector.x ~= 0 or aimVector.y ~= 0 then
+    print("spawn");
+
+    -- Spawn a weapon at this tile
+    local actor = makeActor(actorData.sword, 0)
+    actor.x = player.x
+    actor.y = player.y
+  	actor.frame = charactersSmallFrames[actor.frameNumber]
+    actor.movementVector = aimVector
+  end
+
   -- Space key (debugging for now)
-  if key == 'space' then
+  if key == "space" then
     love.audio.play(monsterDamageSound)
     print("test")
 
@@ -116,14 +133,14 @@ function love.update(dt)
   -- Player movement
   player.movementVector.x = 0;
   player.movementVector.y = 0;
-  if keyIsDown("up") or keyIsDown("w") then
+  if keyIsDown("w") then
     player.movementVector.y = -1
-  elseif keyIsDown("down") or keyIsDown("s") then
+  elseif keyIsDown("s") then
     player.movementVector.y = 1
   end
-  if keyIsDown("left") or keyIsDown("a") then
+  if keyIsDown("a") then
     player.movementVector.x = -1
-  elseif keyIsDown("right") or keyIsDown("d") then
+  elseif keyIsDown("d") then
     player.movementVector.x = 1
   end
 
