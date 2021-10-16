@@ -9,6 +9,7 @@ TEAM_MONSTER = 2
 
 require("lua/actor")
 require("lua/actorData")
+require("lua/images")
 require("lua/sounds")
 require("lua/tilemap")
 require("lua/toolbox")
@@ -26,15 +27,15 @@ player = makeActor(actorData.player, TEAM_PLAYER)
 keyIsDown = love.keyboard.isDown
 
 function love.load ()
-	-- Images
-	envSewerImage = love.graphics.newImage("images/arena_02.png")
+	-- Load assets
+	images.load()
+	sounds.load()
 
 	-- Load the small characters sprite sheet and assign frames
-	charactersSmallImage = love.graphics.newImage("images/sheet_characters_small.png")
 	sheetIndex = 0
 	for y = 0, 21 do
 		for x = 0, 21 do
-			charactersSmallFrames[sheetIndex] = love.graphics.newQuad(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, charactersSmallImage:getDimensions())
+			charactersSmallFrames[sheetIndex] = love.graphics.newQuad(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, images.sources.characters:getDimensions())
 			sheetIndex = sheetIndex + 1
 		end
 	end
@@ -42,17 +43,13 @@ function love.load ()
 	player.frame = charactersSmallFrames[player.frameNumber]
 
 	-- Load objects and sprite sheet
-	objectsImage = love.graphics.newImage("images/sheet_objects.png")
 	sheetIndex = 0
 	for y = 0, 8 do
 		for x = 0, 12 do
-			objectFrames[sheetIndex] = love.graphics.newQuad(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, objectsImage:getDimensions())
+			objectFrames[sheetIndex] = love.graphics.newQuad(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, images.sources.objects:getDimensions())
 			sheetIndex = sheetIndex + 1
 		end
 	end
-
-	-- Sounds
-	sounds.load();
 
 	-- Music
 	sewersMusic = love.audio.newSource("music/sewers.mp3", "stream")
@@ -61,12 +58,12 @@ end
 
 function love.draw ()
 	-- Draw environment
-	love.graphics.draw(envSewerImage, 0, 0)
+	love.graphics.draw(images.sources.sewers, 0, 0)
 	-- tilemap.draw() -- DEBUG: show the tilemap
 
 	-- Draw actors
 	for key, actor in pairs(actors) do
-		love.graphics.draw(charactersSmallImage, actor.frame, actor.x, actor.y)
+		love.graphics.draw(images.sources.characters, actor.frame, actor.x, actor.y)
 	end
 
 	-- Paused notification

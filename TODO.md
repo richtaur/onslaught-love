@@ -1,13 +1,8 @@
 # TODO
 
-+ add sounds
-	+ attack
-	+ goblin die
-	+ weapon hit wall
-	- spawn goblin
-
-- clean up image references
-	- use sword imagfe
++ clean up image references
+	- move frame management into images
+	- use sword image
 
 - implement states
 	- stun

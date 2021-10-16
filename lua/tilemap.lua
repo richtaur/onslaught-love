@@ -12,7 +12,7 @@ tilemap.draw = function ()
 			if tile > 0 then
 				local tileX = (x - 1) * TILE_SIZE
 				local tileY = (y - 1) * TILE_SIZE
-				love.graphics.draw(objectsImage, objectFrames[tile], tileX, tileY)
+				love.graphics.draw(images.sources.objects, objectFrames[tile], tileX, tileY)
 			end
 		end
 	end
