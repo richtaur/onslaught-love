@@ -4,7 +4,8 @@
 + present sprites
 	+ draw sprite rect from sheet
 	- animate
-- detect keyboard input
++ detect keyboard input
+	- log to console etc.
 - play a sound
 + play music
 - switch scenes

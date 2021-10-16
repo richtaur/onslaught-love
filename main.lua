@@ -1,6 +1,10 @@
+SCREEN_WIDTH = 1024
+SCREEN_HEIGHT = 768
+MARGIN = 16
 SPRITE_SIZE = 32
 
 charactersSmallFrames = {}
+text = "Centered Text Hi"
 
 function love.load()
   -- Images
@@ -20,10 +24,18 @@ function love.load()
 end
 
 function love.draw()
-  love.graphics.print("Centered Text Hi", 320, 240)
-
   love.graphics.draw(envSewerImage, 0, 0)
 
   -- love.graphics.draw(charactersSmallImage, 0, 0)
   love.graphics.draw(charactersSmallImage, charactersSmallFrameActive, 320, 240)
+
+  love.graphics.print(text, MARGIN, SCREEN_HEIGHT - (MARGIN * 2))
+end
+
+function love.keypressed(key)
+  if key == 'up' then
+    text = "up"
+  elseif key == 'down' then
+    text = "down"
+  end
 end
