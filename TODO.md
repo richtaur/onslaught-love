@@ -2,7 +2,6 @@
 
 - add ability to mute music
 	- settings menu?
-
 - switch scenes
 	- transition between them
 	- stop/start music
