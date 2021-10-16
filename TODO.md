@@ -1,7 +1,5 @@
 # TODO
 
-- fix tilemap collision
-
 - detect actor/actor collision
 	+ assign sword player team
 - destroy weapon on tilemap collision

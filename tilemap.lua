@@ -25,14 +25,29 @@ tilemap.load = function (loadTilemap)
 end
 
 tilemap.checkActorCollision = function (actor)
-	local centerX = actor.x + (TILE_SIZE / 2)
-	local tileX = math.floor(centerX / TILE_SIZE) + 1
+	if tilemap.checkTile(actor.x, actor.y) then
+		return true
+	end
+	if tilemap.checkTile(actor.x + TILE_SIZE, actor.y) then
+		return true
+	end
+	if tilemap.checkTile(actor.x, actor.y + TILE_SIZE) then
+		return true
+	end
+	if tilemap.checkTile(actor.x + TILE_SIZE, actor.y + TILE_SIZE) then
+		return true
+	end
+
+	return false
+end
+
+tilemap.checkTile = function (x, y)
+	local tileX = math.floor(x / TILE_SIZE) + 1
 	if tileX < 1 or tileX > tilemap.width then
 		return true
 	end
 
-	local centerY = actor.y + (TILE_SIZE / 2)
-	local tileY = math.floor(centerY / TILE_SIZE) + 1
+	local tileY = math.floor(y / TILE_SIZE) + 1
 	if tileY < 1 or tileY > tilemap.height then
 		return true
 	end
