@@ -44,7 +44,7 @@ playerBehavior = function (self, dt)
 		local actor = makeActor(actorData.sword, self.team)
 		actor.x = self.x
 		actor.y = self.y
-		actor.frame = charactersSmallFrames[actor.frameNumber]
+		actor.frame = images.frames.charactersSmall[actor.frameNumber]
 		actor.movementVector = aimVector
 
 		sounds.play("charAttacks")

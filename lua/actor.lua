@@ -57,7 +57,7 @@ makeActor = function (data, team)
 			if self.frameNumber > self.frameMax then
 				self.frameNumber = self.frameMin
 			end
-			self.frame = charactersSmallFrames[self.frameNumber]
+			self.frame = images.frames.charactersSmall[self.frameNumber]
 		end
 
 		-- Update movement ...

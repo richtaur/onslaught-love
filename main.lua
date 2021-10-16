@@ -16,8 +16,6 @@ require("lua/toolbox")
 require("lua/vector")
 
 -- Setup
-charactersSmallFrames = {}
-objectFrames = {}
 paused = false
 
 -- Actors
@@ -31,25 +29,7 @@ function love.load ()
 	images.load()
 	sounds.load()
 
-	-- Load the small characters sprite sheet and assign frames
-	sheetIndex = 0
-	for y = 0, 21 do
-		for x = 0, 21 do
-			charactersSmallFrames[sheetIndex] = love.graphics.newQuad(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, images.sources.characters:getDimensions())
-			sheetIndex = sheetIndex + 1
-		end
-	end
-
-	player.frame = charactersSmallFrames[player.frameNumber]
-
-	-- Load objects and sprite sheet
-	sheetIndex = 0
-	for y = 0, 8 do
-		for x = 0, 12 do
-			objectFrames[sheetIndex] = love.graphics.newQuad(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, images.sources.objects:getDimensions())
-			sheetIndex = sheetIndex + 1
-		end
-	end
+	player.frame = images.frames.charactersSmall[player.frameNumber]
 
 	-- Music
 	sewersMusic = love.audio.newSource("music/sewers.mp3", "stream")
@@ -111,7 +91,7 @@ function love.mousepressed (x, y, button, istouch, presses)
 	local actor = makeActor(actorData.goblin, TEAM_MONSTER)
 	actor.x = tileX * TILE_SIZE
 	actor.y = tileY * TILE_SIZE
-	actor.frame = charactersSmallFrames[actor.frameNumber]
+	actor.frame = images.frames.charactersSmall[actor.frameNumber]
 
 	sounds.play("wizardReappear")
 end

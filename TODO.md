@@ -1,7 +1,7 @@
 # TODO
 
 + clean up image references
-	- move frame management into images
+	+ move frame management into images
 	- use sword image
 
 - implement states
