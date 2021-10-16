@@ -12,6 +12,8 @@ makeActor = function (data, team)
 	self.animationInterval = 0.5
 	self.frame = nil
 	self.speed = data.speed * TILE_SIZE
+	self.speedMax = data.speedMax * TILE_SIZE
+	self.running = false
 	self.movementVector = makeVector(0, 0)
 	self.x = 320
 	self.y = 240
@@ -50,6 +52,9 @@ makeActor = function (data, team)
 		-- Update movement ...
 
 		local offset = self.speed * dt
+		if self.running then
+			offset = self.speedMax * dt
+		end
 		local previousX = self.x
 		local tilemapCollision = false
 		self.x = self.x + (self.movementVector.x * offset)

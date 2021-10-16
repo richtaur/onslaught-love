@@ -146,6 +146,7 @@ function love.update (dt)
 	-- Player movement
 	player.movementVector.x = 0;
 	player.movementVector.y = 0;
+	player.running = keyIsDown("lshift") or keyIsDown("rshift")
 	if keyIsDown("w") then
 		player.movementVector.y = -1
 	elseif keyIsDown("s") then
