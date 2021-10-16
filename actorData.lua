@@ -18,10 +18,6 @@ actorData.goblin.frameMax = 119
 actorData.goblin.speed = 2
 
 actorData.sword = {}
--- actorData.sword.behavior = chaseBehavior;
--- actorData.sword.behaviorConfig = {};
--- actorData.sword.behaviorConfig.proximityMin = 3 * TILE_SIZE
--- actorData.sword.behaviorConfig.proximityMax = 5 * TILE_SIZE
 actorData.sword.frameMin = 22
 actorData.sword.frameMax = 22
 actorData.sword.speed = 12

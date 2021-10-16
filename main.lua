@@ -6,6 +6,7 @@ TILE_SIZE = 32
 
 require("actor")
 require("actorData")
+require("tilemap")
 require("toolbox")
 require("vector")
 
@@ -45,7 +46,9 @@ function love.load()
 end
 
 function love.draw()
+  -- Draw environment
   love.graphics.draw(envSewerImage, 0, 0)
+  tilemap.draw()
 
   -- Draw actors
   for actorId, actor in pairs(actors) do

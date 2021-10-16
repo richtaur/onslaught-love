@@ -2,14 +2,18 @@
 
 + spawn weapon
 	+ add velocity
-		- actorData.speed
-	- use arrow keys to spawn weapon
-		- add cooldown
-	- add env collision / limits
-		- destroy on collision
+		+ actorData.speed
+	+ use arrow keys to spawn weapon
+	+ add env collision / limits
+		- add a tilemap
+		- load tiles from string/array data
+		- destroy weapon on collision
 		- destroy goblin on collision
-	- end game on goblin/player collide
+		- constrain player within tiles
+	- detect goblin/player collide
+		- end game on goblin/player collide
 
+- add attack cooldown
 - save some data
 	- load that data
 - switch scenes
