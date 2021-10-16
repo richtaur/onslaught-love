@@ -2,13 +2,15 @@
 
 + add a goblin
 	+ use goblin sprite
-	- animate goblin
+	+ animate goblin
 	- add goblin behavior
 - click to spawn goblin
-- add env collision
+	- detect click
+	- spawn goblin
+- add env collision / limits
 - press space to spawn weapon
 	- move
-	- destroy
+	- destroy on collision
 	- use arrow keys to spawn weapon
 
 - save some data

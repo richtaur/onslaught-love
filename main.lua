@@ -15,6 +15,8 @@ text = "Centered Text Hi"
 -- Actors
 player = makeActor(actorData.player)
 goblin = makeActor(actorData.goblin)
+goblin.x = SCREEN_WIDTH / 2;
+goblin.y = SCREEN_HEIGHT / 2;
 
 -- Functions ...
 keyIsDown = love.keyboard.isDown
@@ -86,6 +88,7 @@ function love.keypressed(key)
 end
 
 function love.update(dt)
+  -- Paused: do nothing
   if paused then
     return
   end
@@ -103,15 +106,7 @@ function love.update(dt)
     player.x = player.x + playerOffset
   end
 
-  -- Player animation
-  player.elapsedTime = player.elapsedTime + dt
-  if player.elapsedTime > player.animationInterval then
-    player.elapsedTime = 0
-    player.frameNumber = player.frameNumber + 1
-    if player.frameNumber > player.frameMax then
-      player.frameNumber = player.frameMin
-    end
-    player.frame = charactersSmallFrames[player.frameNumber]
-  end
-
+  -- Actor animation
+  player.update(dt)
+  goblin.update(dt)
 end
