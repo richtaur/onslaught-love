@@ -5,10 +5,11 @@
 	+ draw sprite rect from sheet
 	+ animate
 + detect keyboard input
-	- log to console etc.
-	- move player via input
+	+ move player via input
+		- wasd too
 + play a sound
 + play music
+- log to console etc.
 - switch scenes
 	- transition between them
 	- stop/start music

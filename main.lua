@@ -13,6 +13,9 @@ player = {}
 player.elapsedTime = 0
 player.animationInterval = 0.5
 player.frameNumber = 1
+player.speed = SPRITE_SIZE * 4 -- tiles per second
+player.x = 320
+player.y = 240
 
 -- Functions ...
 
@@ -41,24 +44,42 @@ function love.draw()
   love.graphics.draw(envSewerImage, 0, 0)
 
   -- love.graphics.draw(charactersSmallImage, 0, 0)
-  love.graphics.draw(charactersSmallImage, charactersSmallFrame, 320, 240)
+  -- Draw player
+  love.graphics.draw(charactersSmallImage, charactersSmallFrame, player.x, player.y)
 
   love.graphics.print(text, MARGIN, SCREEN_HEIGHT - (MARGIN * 2))
 end
 
 function love.keypressed(key)
+  -- Space key (debugging for now)
+  if key == 'space' then
+    love.audio.play(monsterDamageSound)
+  end
+
+  -- Player movement
   if key == 'up' then
-    text = "up"
-    love.audio.play(monsterDamageSound)
   elseif key == 'down' then
-    text = "down"
-    love.audio.play(monsterDamageSound)
+  elseif key == 'left' then
+  elseif key == 'right' then
   end
 end
 
 function love.update(dt)
-  player.elapsedTime = player.elapsedTime + dt
+  -- Player movement
+  playerOffset = player.speed * dt
+  if love.keyboard.isDown("up") then
+    player.y = player.y - playerOffset
+  elseif love.keyboard.isDown("down") then
+    player.y = player.y + playerOffset
+  end
+  if love.keyboard.isDown("left") then
+    player.x = player.x - playerOffset
+  elseif love.keyboard.isDown("right") then
+    player.x = player.x + playerOffset
+  end
 
+  -- Player animation
+  player.elapsedTime = player.elapsedTime + dt
   if player.elapsedTime > player.animationInterval then
     player.elapsedTime = 0
     player.frameNumber = player.frameNumber + 1
