@@ -61,7 +61,7 @@ end
 function love.draw ()
 	-- Draw environment
 	love.graphics.draw(envSewerImage, 0, 0)
-	tilemap.draw()
+	-- tilemap.draw() -- DEBUG: show the tilemap
 
 	-- Draw actors
 	for key, actor in pairs(actors) do
@@ -160,5 +160,12 @@ function love.update (dt)
 	-- Update actors
 	for key, actor in pairs(actors) do
 		actor.update(dt)
+	end
+
+	-- Remove dead actors
+	for key, actor in pairs(actors) do
+		if actor.life <= 0 then
+			actors[key] = nil
+		end
 	end
 end

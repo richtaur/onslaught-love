@@ -19,9 +19,15 @@ makeActor = function (data, team)
 	-- Apply actor data
 	self.behavior = data.behavior
 	self.behaviorConfig = data.behaviorConfig
+	self.damage = data.damage
+	self.life = data.life
 	self.frameMin = data.frameMin
 	self.frameMax = data.frameMax
 	self.frameNumber = self.frameMin
+
+	self.collide = function (actor)
+		actor.life = actor.life - self.damage
+	end
 
 	self.update = function (dt)
 		-- Update behavior
@@ -62,11 +68,12 @@ makeActor = function (data, team)
 					-- Check collision on this dude
 					if toolbox.actorsCollide(actor, self) then
 						print("COLLIDED")
+						self.collide(actor)
+						actor.collide(self)
 					end
 				end
 			end
 		end
-
 	end
 
 	actors[actorId] = self;
