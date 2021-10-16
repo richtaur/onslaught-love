@@ -1,9 +1,5 @@
 # TODO
 
-+ clean up image references
-	+ move frame management into images
-	- use sword image
-
 - implement states
 	- stun
 	- pain
@@ -15,5 +11,7 @@
 	- transition between them
 	- stop/start music
 		- loop music
+- use sword image
+	- rotate sword in velocity direction
 - save some data
 	- load that data

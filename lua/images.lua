@@ -8,12 +8,12 @@ images.load = function ()
 	local sheetIndex = 0
 
 	-- Load the small characters sprite sheet and assign frames
-	images.sources.characters = love.graphics.newImage("images/sheet_characters_small.png")
+	images.sources.charactersSmall = love.graphics.newImage("images/sheet_characters_small.png")
 	images.frames.charactersSmall = {}
 	sheetIndex = 0
 	for y = 0, 21 do
 		for x = 0, 21 do
-			images.frames.charactersSmall[sheetIndex] = love.graphics.newQuad(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, images.sources.characters:getDimensions())
+			images.frames.charactersSmall[sheetIndex] = love.graphics.newQuad(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, images.sources.charactersSmall:getDimensions())
 			sheetIndex = sheetIndex + 1
 		end
 	end

@@ -41,7 +41,7 @@ function love.draw ()
 
 	-- Draw actors
 	for key, actor in pairs(actors) do
-		love.graphics.draw(images.sources.characters, actor.frame, actor.x, actor.y)
+		love.graphics.draw(images.sources[actor.imageKey], actor.frame, actor.x, actor.y)
 	end
 
 	-- Paused notification

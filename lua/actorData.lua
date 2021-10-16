@@ -29,19 +29,19 @@ actorData.goblin.frameMax = 119
 actorData.goblin.damage = 1
 actorData.goblin.damageFromTilemap = 0
 actorData.goblin.damageSound = "monsterDamageSound"
-actorData.player.imageKey = "charactersSmall"
+actorData.goblin.imageKey = "charactersSmall"
 actorData.goblin.life = 1
 actorData.goblin.speed = 2
 actorData.goblin.speedMax = 2
 
 -- Sword
 actorData.sword = {}
-actorData.sword.frameMin = 22
-actorData.sword.frameMax = 22
+actorData.sword.frameMin = 6
+actorData.sword.frameMax = 6
 actorData.sword.damage = 1
 actorData.sword.damageFromTilemap = 1
 actorData.sword.damageSound = "weaponWall"
-actorData.player.imageKey = "objects"
+actorData.sword.imageKey = "objects"
 actorData.sword.life = 1
 actorData.sword.speed = 12
 actorData.sword.speedMax = 12
