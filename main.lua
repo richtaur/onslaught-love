@@ -57,14 +57,17 @@ function love.draw()
   love.graphics.draw(envSewerImage, 0, 0)
 
   -- Draw actors
-  love.graphics.draw(charactersSmallImage, player.frame, player.x, player.y)
-  love.graphics.draw(charactersSmallImage, goblin.frame, goblin.x, goblin.y)
+  for actorId, actor in pairs(actors) do
+    love.graphics.draw(charactersSmallImage, actor.frame, actor.x, actor.y)
+  end
 
-  love.graphics.print(text, MARGIN, SCREEN_HEIGHT - (MARGIN * 2))
-
+  -- Paused notification
   if paused then
     love.graphics.print("PAUSED", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
   end
+
+  -- DEBUG text
+  love.graphics.print(text, MARGIN, SCREEN_HEIGHT - (MARGIN * 2))
 end
 
 function love.keypressed(key)
