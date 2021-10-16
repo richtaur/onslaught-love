@@ -2,7 +2,7 @@
 
 + present text
 + present sprites
-	- draw sprite rect from sheet
+	+ draw sprite rect from sheet
 	- animate
 - detect keyboard input
 - play a sound
