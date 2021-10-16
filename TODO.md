@@ -1,5 +1,16 @@
 # TODO
 
+- add sounds
+	- attack
+	- goblin die
+	- weapon hit wall
+	- spawn goblin
+
+- implement states
+	- stun
+	- pain
+	- death?
+	- use higher life
 - add ability to mute music
 	- settings menu?
 - switch scenes

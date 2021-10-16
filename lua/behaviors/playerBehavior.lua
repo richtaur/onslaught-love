@@ -1,5 +1,4 @@
 playerBehavior = function (self, dt)
-	print("player behavior ...")
 	if self.life <= 0 then
 		return
 	end
@@ -22,7 +21,6 @@ playerBehavior = function (self, dt)
 	-- Cooldown
 	self.behaviorConfig.cooldownElapsed = self.behaviorConfig.cooldownElapsed + dt
 	if self.behaviorConfig.cooldownElapsed < self.behaviorConfig.cooldownDuration then
-		print("cooling down ...")
 		return
 	end
 
