@@ -18,9 +18,6 @@ require("lua/vector")
 -- Setup
 paused = false
 
--- Actors
-player = makeActor(actorData.player, TEAM_PLAYER)
-
 -- Functions ...
 keyIsDown = love.keyboard.isDown
 
@@ -29,11 +26,12 @@ function love.load ()
 	images.load()
 	sounds.load()
 
-	player.frame = images.frames.charactersSmall[player.frameNumber]
-
 	-- Music
 	sewersMusic = love.audio.newSource("music/sewers.mp3", "stream")
 	-- love.audio.play(sewersMusic)
+
+	-- Player
+	makeActor(actorData.player, TEAM_PLAYER)
 end
 
 function love.draw ()
@@ -91,7 +89,6 @@ function love.mousepressed (x, y, button, istouch, presses)
 	local actor = makeActor(actorData.goblin, TEAM_MONSTER)
 	actor.x = tileX * TILE_SIZE
 	actor.y = tileY * TILE_SIZE
-	actor.frame = images.frames.charactersSmall[actor.frameNumber]
 
 	sounds.play("wizardReappear")
 end

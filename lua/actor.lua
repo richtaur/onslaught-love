@@ -10,7 +10,6 @@ makeActor = function (data, team)
 	self.target = nil
 	self.elapsedTime = 0
 	self.animationInterval = 0.5
-	self.frame = nil
 	self.speed = data.speed * TILE_SIZE
 	self.speedMax = data.speedMax * TILE_SIZE
 	self.running = false
@@ -24,10 +23,14 @@ makeActor = function (data, team)
 	self.damage = data.damage
 	self.damageFromTilemap = data.damageFromTilemap
 	self.damageSound = data.damageSound
+	self.imageKey = "charactersSmall"
 	self.life = data.life
 	self.frameMin = data.frameMin
 	self.frameMax = data.frameMax
 	self.frameNumber = self.frameMin
+	self.frame = images.frames[self.imageKey][self.frameNumber]
+
+	-- Methods ...
 
 	self.collide = function (actor)
 		if self.damage > 0 then
@@ -57,7 +60,7 @@ makeActor = function (data, team)
 			if self.frameNumber > self.frameMax then
 				self.frameNumber = self.frameMin
 			end
-			self.frame = images.frames.charactersSmall[self.frameNumber]
+			self.frame = images.frames[self.imageKey][self.frameNumber]
 		end
 
 		-- Update movement ...
