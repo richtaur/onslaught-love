@@ -8,6 +8,9 @@ chaseBehavior = function (self, dt)
 			end
 		end
 	end
+	if self.target == nil then
+		return
+	end
 
 	-- Chase the target ...
 

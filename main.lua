@@ -70,7 +70,7 @@ function love.draw ()
 
 	-- Paused notification
 	if paused then
-		love.graphics.print("PAUSED", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+		love.graphics.print("PAUSED", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0, 4)
 	end
 
 	-- DEBUG text
@@ -91,24 +91,26 @@ function love.keypressed (key)
 	end
 
 	-- Projectiles
-	local aimVector = makeVector(0, 0)
-	if key == "left" then
-		aimVector.x = -1
-	elseif key == "right" then
-		aimVector.x = 1
-	end
-	if key == "up" then
-		aimVector.y = -1
-	elseif key == "down" then
-		aimVector.y = 1
-	end
-	if aimVector.x ~= 0 or aimVector.y ~= 0 then
-		-- Spawn a weapon at this tile
-		local actor = makeActor(actorData.sword, player.team)
-		actor.x = player.x
-		actor.y = player.y
-		actor.frame = charactersSmallFrames[actor.frameNumber]
-		actor.movementVector = aimVector
+	if player.life > 0 then
+		local aimVector = makeVector(0, 0)
+		if key == "left" then
+			aimVector.x = -1
+		elseif key == "right" then
+			aimVector.x = 1
+		end
+		if key == "up" then
+			aimVector.y = -1
+		elseif key == "down" then
+			aimVector.y = 1
+		end
+		if aimVector.x ~= 0 or aimVector.y ~= 0 then
+			-- Spawn a weapon at this tile
+			local actor = makeActor(actorData.sword, player.team)
+			actor.x = player.x
+			actor.y = player.y
+			actor.frame = charactersSmallFrames[actor.frameNumber]
+			actor.movementVector = aimVector
+		end
 	end
 
 	-- Space key (debugging for now)

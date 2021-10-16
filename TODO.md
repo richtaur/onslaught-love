@@ -1,7 +1,5 @@
 # TODO
 
-- detect goblin/player collide
-	- end game on goblin/player collide
 - add attack cooldown
 - save some data
 	- load that data
