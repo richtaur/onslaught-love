@@ -55,6 +55,7 @@ function love.keypressed(key)
   -- Space key (debugging for now)
   if key == 'space' then
     love.audio.play(monsterDamageSound)
+    print("test")
   end
 
   -- Player movement

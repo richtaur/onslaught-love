@@ -9,7 +9,7 @@
 		+ wasd too
 + play a sound
 + play music
-- log to console etc.
++ log to console etc.
 - switch scenes
 	- transition between them
 	- stop/start music
