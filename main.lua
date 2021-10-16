@@ -1,15 +1,19 @@
+-- Constants (fake)
 SCREEN_WIDTH = 1024
 SCREEN_HEIGHT = 768
 MARGIN = 16
 SPRITE_SIZE = 32
 
+-- Setup
 charactersSmallFrames = {}
+text = "Centered Text Hi"
 
+-- Player
+elapsedTime = 0
 playerAnimationInterval = 0.5
 playerFrameNumber = 1
 
-elapsedTime = 0
-text = "Centered Text Hi"
+-- Functions ...
 
 function love.load()
   -- Images
