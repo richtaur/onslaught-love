@@ -1,4 +1,4 @@
-require("sewersTilemap")
+require("lua/sewersTilemap")
 
 tilemap = {}
 tilemap.width = 0

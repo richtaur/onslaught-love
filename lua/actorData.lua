@@ -1,5 +1,5 @@
-require("chaseBehavior")
-require("playerBehavior")
+require("lua/chaseBehavior")
+require("lua/playerBehavior")
 
 actorData = {}
 

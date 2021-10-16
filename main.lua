@@ -7,11 +7,11 @@ TILE_SIZE = 32
 TEAM_PLAYER = 1
 TEAM_MONSTER = 2
 
-require("actor")
-require("actorData")
-require("tilemap")
-require("toolbox")
-require("vector")
+require("lua/actor")
+require("lua/actorData")
+require("lua/tilemap")
+require("lua/toolbox")
+require("lua/vector")
 
 -- Setup
 charactersSmallFrames = {}

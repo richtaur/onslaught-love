@@ -1,6 +1,7 @@
 # TODO
 
-- add folder for lua files
++ add folder for lua files
+	- behaviors
 - add ability to mute music
 	- settings menu?
 
