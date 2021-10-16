@@ -1,7 +1,7 @@
 actors = {}
 
 local actorId = 0;
-makeActor = function(data, team)
+makeActor = function (data, team)
 	actorId = actorId + 1
 
 	local actor = {}
@@ -23,7 +23,7 @@ makeActor = function(data, team)
 	actor.frameMax = data.frameMax
 	actor.frameNumber = actor.frameMin
 
-	actor.update = function(dt)
+	actor.update = function (dt)
 		-- Update behavior
 		if actor.behavior ~= nil then
 			actor.behavior(actor, dt)
@@ -42,8 +42,18 @@ makeActor = function(data, team)
 
 		-- Update movement
 	  local offset = actor.speed * dt
+		local previousX = actor.x
     actor.x = actor.x + (actor.movementVector.x * offset)
+		if tilemap.checkActorCollision(actor) then
+			actor.x = previousX
+		end
+
+		local previousY = actor.y
     actor.y = actor.y + (actor.movementVector.y * offset)
+		if tilemap.checkActorCollision(actor) then
+			actor.y = previousY
+		end
+
 	end
 
 	actors[actorId] = actor;

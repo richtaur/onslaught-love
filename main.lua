@@ -21,7 +21,7 @@ player = makeActor(actorData.player, 1)
 -- Functions ...
 keyIsDown = love.keyboard.isDown
 
-function love.load()
+function love.load ()
   -- Images
   envSewerImage = love.graphics.newImage("images/arena_02.png")
 
@@ -55,7 +55,7 @@ function love.load()
   -- love.audio.play(sewersMusic)
 end
 
-function love.draw()
+function love.draw ()
   -- Draw environment
   love.graphics.draw(envSewerImage, 0, 0)
   tilemap.draw()
@@ -75,7 +75,7 @@ function love.draw()
   love.graphics.print(controlsText, MARGIN, SCREEN_HEIGHT - (MARGIN * 4), 0, 2)
 end
 
-function love.keypressed(key)
+function love.keypressed (key)
   -- Escape to pause
   if key == "escape" then
     if paused then
@@ -125,7 +125,7 @@ function love.keypressed(key)
   end
 end
 
-function love.mousepressed(x, y, button, istouch, presses)
+function love.mousepressed (x, y, button, istouch, presses)
   local tileX = math.floor(x / TILE_SIZE)
   local tileY = math.floor(y / TILE_SIZE)
   print("Clicked tile: " .. tileX .. ", " .. tileY)
@@ -137,7 +137,7 @@ function love.mousepressed(x, y, button, istouch, presses)
 	actor.frame = charactersSmallFrames[actor.frameNumber]
 end
 
-function love.update(dt)
+function love.update (dt)
   -- Paused: do nothing
   if paused then
     return

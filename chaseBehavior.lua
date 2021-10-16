@@ -1,4 +1,4 @@
-chaseBehavior = function(self, dt)
+chaseBehavior = function (self, dt)
 	-- Find a target
 	if self.target == nil then
 	  for actorId, actor in pairs(actors) do

@@ -1,8 +1,7 @@
 sewersTilemap = {}
 
-sewersTilemap.config = {}
-sewersTilemap.config.width = 32
-sewersTilemap.config.height = 24
+sewersTilemap.width = 32
+sewersTilemap.height = 24
 
 sewersTilemap.tiles = {
 	{13,13,13,13,13,13, 0, 0,13,13,13,13,13,13,13, 0, 0,13,13,13,13,13,13,13, 0, 0,13,13,13,13,13,13},
