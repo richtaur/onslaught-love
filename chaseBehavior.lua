@@ -22,6 +22,9 @@ chaseBehavior = function(self, dt)
 	local aimVector = toolbox.vectorBetween(self.x, self.y, target.x, target.y)
 	if distance > self.behaviorConfig.proximityMax then
 		self.movementVector = aimVector
+	elseif distance < self.behaviorConfig.proximityMin then
+		self.movementVector.x = aimVector.x * -1
+		self.movementVector.y = aimVector.y * -1
 	end
 
 end

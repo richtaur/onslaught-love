@@ -12,7 +12,6 @@ require("vector")
 -- Setup
 charactersSmallFrames = {}
 paused = false
-text = "Centered Text Hi"
 
 -- Actors
 player = makeActor(actorData.player, 1)
@@ -65,11 +64,11 @@ function love.draw()
   end
 
   -- DEBUG text
-  love.graphics.print(text, MARGIN, SCREEN_HEIGHT - (MARGIN * 2))
+  local controlsText = "Click to spawn goblin\nPress SPACE to kill all goblins"
+  love.graphics.print(controlsText, MARGIN, SCREEN_HEIGHT - (MARGIN * 4), 0, 2)
 end
 
 function love.keypressed(key)
-
   -- Escape to pause
   if key == "escape" then
     if paused then
@@ -85,6 +84,14 @@ function love.keypressed(key)
   if key == 'space' then
     love.audio.play(monsterDamageSound)
     print("test")
+
+    -- Kill all actors not in team 1
+    for actorId, actor in pairs(actors) do
+      if actor.team ~= 1 then
+        -- actors.remove(actorId)
+        actors[actorId] = nil
+      end
+    end
   end
 end
 
