@@ -3,9 +3,10 @@
 + present text
 + present sprites
 	+ draw sprite rect from sheet
-	- animate
+	+ animate
 + detect keyboard input
 	- log to console etc.
+	- move player via input
 + play a sound
 + play music
 - switch scenes
@@ -18,4 +19,3 @@
 + add a window name
 + implement fullscreen
 + change resolution (e.g. 400x240)
-	- use constants for resolution

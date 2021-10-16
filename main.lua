@@ -4,6 +4,11 @@ MARGIN = 16
 SPRITE_SIZE = 32
 
 charactersSmallFrames = {}
+
+playerAnimationInterval = 0.5
+playerFrameNumber = 1
+
+elapsedTime = 0
 text = "Centered Text Hi"
 
 function love.load()
@@ -13,7 +18,8 @@ function love.load()
   -- Load the small characters sprite sheet and assign frames
   charactersSmallImage = love.graphics.newImage("images/sheet_characters_small.png")
 	charactersSmallFrames[1] = love.graphics.newQuad(8 * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE, charactersSmallImage:getDimensions())
-	charactersSmallFrameActive = charactersSmallFrames[1]
+	charactersSmallFrames[2] = love.graphics.newQuad(9 * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE, charactersSmallImage:getDimensions())
+	charactersSmallFrame = charactersSmallFrames[playerFrameNumber]
 
   -- Sound effect?
   -- sound = love.audio.newSource("sounds/monster_damage", "stream")
@@ -30,7 +36,7 @@ function love.draw()
   love.graphics.draw(envSewerImage, 0, 0)
 
   -- love.graphics.draw(charactersSmallImage, 0, 0)
-  love.graphics.draw(charactersSmallImage, charactersSmallFrameActive, 320, 240)
+  love.graphics.draw(charactersSmallImage, charactersSmallFrame, 320, 240)
 
   love.graphics.print(text, MARGIN, SCREEN_HEIGHT - (MARGIN * 2))
 end
@@ -43,4 +49,18 @@ function love.keypressed(key)
     text = "down"
     love.audio.play(monsterDamageSound)
   end
+end
+
+function love.update(dt)
+  elapsedTime = elapsedTime + dt
+
+  if elapsedTime > playerAnimationInterval then
+    elapsedTime = 0
+    playerFrameNumber = playerFrameNumber + 1
+    if playerFrameNumber > 2 then
+      playerFrameNumber = 1
+    end
+    charactersSmallFrame = charactersSmallFrames[playerFrameNumber]
+  end
+
 end
