@@ -14,9 +14,6 @@ text = "Centered Text Hi"
 
 -- Actors
 player = makeActor(actorData.player)
-goblin = makeActor(actorData.goblin)
-goblin.x = SCREEN_WIDTH / 2;
-goblin.y = SCREEN_HEIGHT / 2;
 
 -- Functions ...
 keyIsDown = love.keyboard.isDown
@@ -40,7 +37,6 @@ function love.load()
 	-- charactersSmallFrames[2] = love.graphics.newQuad(9 * TILE_SIZE, 0, TILE_SIZE, TILE_SIZE, charactersSmallImage:getDimensions())
 
 	player.frame = charactersSmallFrames[player.frameNumber]
-	goblin.frame = charactersSmallFrames[goblin.frameNumber]
 
   -- Sound effect?
   -- sound = love.audio.newSource("sounds/monster_damage", "stream")
@@ -94,6 +90,12 @@ function love.mousepressed(x, y, button, istouch, presses)
   local tileX = math.floor(x / TILE_SIZE)
   local tileY = math.floor(y / TILE_SIZE)
   print("Clicked tile: " .. tileX .. ", " .. tileY)
+
+  -- Spawn a goblin at this tile
+  local actor = makeActor(actorData.goblin)
+  actor.x = tileX * TILE_SIZE
+  actor.y = tileY * TILE_SIZE
+	actor.frame = charactersSmallFrames[actor.frameNumber]
 end
 
 function love.update(dt)

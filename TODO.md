@@ -1,12 +1,6 @@
 # TODO
 
-+ add a goblin
-	+ use goblin sprite
-	+ animate goblin
-	- add goblin behavior
-+ click to spawn goblin
-	+ detect click
-	- spawn goblin
+- add goblin behavior
 
 - add env collision / limits
 - press space to spawn weapon
