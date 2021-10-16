@@ -1,6 +1,5 @@
 # TODO
 
-- fix spacing
 - fix tilemap collision
 
 - detect actor/actor collision

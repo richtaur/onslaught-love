@@ -30,33 +30,33 @@ makeActor = function (data, team)
 		end
 
 		-- Update animation frame
-	  self.elapsedTime = self.elapsedTime + dt
-	  if self.elapsedTime > self.animationInterval then
-	    self.elapsedTime = 0
-	    self.frameNumber = self.frameNumber + 1
-	    if self.frameNumber > self.frameMax then
-	      self.frameNumber = self.frameMin
-	    end
-	    self.frame = charactersSmallFrames[self.frameNumber]
-	  end
+		self.elapsedTime = self.elapsedTime + dt
+		if self.elapsedTime > self.animationInterval then
+			self.elapsedTime = 0
+			self.frameNumber = self.frameNumber + 1
+			if self.frameNumber > self.frameMax then
+				self.frameNumber = self.frameMin
+			end
+			self.frame = charactersSmallFrames[self.frameNumber]
+		end
 
 		-- Update movement ...
 
-	  local offset = self.speed * dt
+		local offset = self.speed * dt
 		local previousX = self.x
-    self.x = self.x + (self.movementVector.x * offset)
+		self.x = self.x + (self.movementVector.x * offset)
 		if tilemap.checkActorCollision(self) then
 			self.x = previousX
 		end
 
 		local previousY = self.y
-    self.y = self.y + (self.movementVector.y * offset)
+		self.y = self.y + (self.movementVector.y * offset)
 		if tilemap.checkActorCollision(self) then
 			self.y = previousY
 		end
 
 		-- Detect collision with other actors
-	  -- for actorId, actor in pairs(actors) do
+		-- for actorId, actor in pairs(actors) do
 		-- end
 
 	end
