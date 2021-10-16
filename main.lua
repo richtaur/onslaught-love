@@ -6,6 +6,7 @@ SPRITE_SIZE = 32
 
 -- Setup
 charactersSmallFrames = {}
+paused = false
 text = "Centered Text Hi"
 
 require("player")
@@ -30,8 +31,8 @@ function love.load()
   monsterDamageSound = love.audio.newSource("sounds/monster_damage.mp3", "static")
 
   -- Music
-  -- winMusic = love.audio.newSource("music/win.mp3", "stream")
-  -- love.audio.play(winMusic)
+  sewersMusic = love.audio.newSource("music/sewers.mp3", "stream")
+  love.audio.play(sewersMusic)
 end
 
 function love.draw()
@@ -42,24 +43,37 @@ function love.draw()
   love.graphics.draw(charactersSmallImage, charactersSmallFrame, player.x, player.y)
 
   love.graphics.print(text, MARGIN, SCREEN_HEIGHT - (MARGIN * 2))
+
+  if paused then
+    love.graphics.print("PAUSED", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+  end
 end
 
 function love.keypressed(key)
+
+  -- Escape to pause
+  if key == "escape" then
+    if paused then
+      paused = false
+      love.audio.play(sewersMusic)
+    else
+      paused = true
+      love.audio.pause(sewersMusic)
+    end
+  end
+
   -- Space key (debugging for now)
   if key == 'space' then
     love.audio.play(monsterDamageSound)
     print("test")
   end
-
-  -- Player movement
-  if key == 'up' then
-  elseif key == 'down' then
-  elseif key == 'left' then
-  elseif key == 'right' then
-  end
 end
 
 function love.update(dt)
+  if paused then
+    return
+  end
+
   -- Player movement
   playerOffset = player.speed * dt
   if keyIsDown("up") or keyIsDown("w") then
