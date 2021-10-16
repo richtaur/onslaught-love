@@ -18,6 +18,7 @@ player.x = 320
 player.y = 240
 
 -- Functions ...
+keyIsDown = love.keyboard.isDown
 
 function love.load()
   -- Images
@@ -67,14 +68,14 @@ end
 function love.update(dt)
   -- Player movement
   playerOffset = player.speed * dt
-  if love.keyboard.isDown("up") then
+  if keyIsDown("up") or keyIsDown("w") then
     player.y = player.y - playerOffset
-  elseif love.keyboard.isDown("down") then
+  elseif keyIsDown("down") or keyIsDown("s") then
     player.y = player.y + playerOffset
   end
-  if love.keyboard.isDown("left") then
+  if keyIsDown("left") or keyIsDown("a") then
     player.x = player.x - playerOffset
-  elseif love.keyboard.isDown("right") then
+  elseif keyIsDown("right") or keyIsDown("d") then
     player.x = player.x + playerOffset
   end
 

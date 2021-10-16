@@ -6,7 +6,7 @@
 	+ animate
 + detect keyboard input
 	+ move player via input
-		- wasd too
+		+ wasd too
 + play a sound
 + play music
 - log to console etc.
