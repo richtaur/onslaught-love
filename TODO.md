@@ -1,17 +1,14 @@
 # TODO
 
-+ spawn weapon
-	+ add velocity
-		+ actorData.speed
-	+ use arrow keys to spawn weapon
-	+ add env collision / limits
-		+ add a tilemap
-		+ load tiles from string/array data
-			+ draw as debug
-		+ detect tile collision
-		- destroy weapon on collision
-		- destroy goblin on collision
-		- constrain player within tiles
+- fix spacing
+- fix tilemap collision
+
+- detect actor/actor collision
+	+ assign sword player team
+- destroy weapon on tilemap collision
+	- detect weapon/goblin collision
+		- destroy goblin on collision with weapon
+		- destroy weapon on collision with goblin
 	- detect goblin/player collide
 		- end game on goblin/player collide
 

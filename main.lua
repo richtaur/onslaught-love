@@ -4,6 +4,9 @@ SCREEN_HEIGHT = 768
 MARGIN = 16
 TILE_SIZE = 32
 
+TEAM_PLAYER = 1
+TEAM_MONSTER = 2
+
 require("actor")
 require("actorData")
 require("tilemap")
@@ -16,7 +19,7 @@ objectFrames = {}
 paused = false
 
 -- Actors
-player = makeActor(actorData.player, 1)
+player = makeActor(actorData.player, TEAM_PLAYER)
 
 -- Functions ...
 keyIsDown = love.keyboard.isDown
@@ -103,7 +106,7 @@ function love.keypressed (key)
     print("spawn");
 
     -- Spawn a weapon at this tile
-    local actor = makeActor(actorData.sword, 0)
+    local actor = makeActor(actorData.sword, player.team)
     actor.x = player.x
     actor.y = player.y
   	actor.frame = charactersSmallFrames[actor.frameNumber]
@@ -131,7 +134,7 @@ function love.mousepressed (x, y, button, istouch, presses)
   print("Clicked tile: " .. tileX .. ", " .. tileY)
 
   -- Spawn a goblin at this tile
-  local actor = makeActor(actorData.goblin, 0)
+  local actor = makeActor(actorData.goblin, TEAM_MONSTER)
   actor.x = tileX * TILE_SIZE
   actor.y = tileY * TILE_SIZE
 	actor.frame = charactersSmallFrames[actor.frameNumber]

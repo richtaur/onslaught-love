@@ -2,7 +2,7 @@ chaseBehavior = function (self, dt)
 	-- Find a target
 	if self.target == nil then
 	  for actorId, actor in pairs(actors) do
-			if actor.team ~= self.team then
+			if actor.team > 0 and actor.team ~= self.team then
 				self.target = actor
 				break
 			end

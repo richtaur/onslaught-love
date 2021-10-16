@@ -25,7 +25,6 @@ tilemap.load = function (loadTilemap)
 end
 
 tilemap.checkActorCollision = function (actor)
-  print("check")
   local centerX = actor.x + (TILE_SIZE / 2)
   local tileX = math.floor(centerX / TILE_SIZE) + 1
   if tileX < 1 or tileX > tilemap.width then

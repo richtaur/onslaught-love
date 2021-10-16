@@ -4,58 +4,63 @@ local actorId = 0;
 makeActor = function (data, team)
 	actorId = actorId + 1
 
-	local actor = {}
-	actor.id = actorId
-	actor.team = team
-	actor.target = nil
-	actor.elapsedTime = 0
-	actor.animationInterval = 0.5
-	actor.frame = nil
-	actor.speed = data.speed * TILE_SIZE
-	actor.movementVector = makeVector(0, 0)
-	actor.x = 320
-	actor.y = 240
+	local self = {}
+	self.id = actorId
+	self.team = team
+	self.target = nil
+	self.elapsedTime = 0
+	self.animationInterval = 0.5
+	self.frame = nil
+	self.speed = data.speed * TILE_SIZE
+	self.movementVector = makeVector(0, 0)
+	self.x = 320
+	self.y = 240
 
 	-- Apply actor data
-	actor.behavior = data.behavior
-	actor.behaviorConfig = data.behaviorConfig
-	actor.frameMin = data.frameMin
-	actor.frameMax = data.frameMax
-	actor.frameNumber = actor.frameMin
+	self.behavior = data.behavior
+	self.behaviorConfig = data.behaviorConfig
+	self.frameMin = data.frameMin
+	self.frameMax = data.frameMax
+	self.frameNumber = self.frameMin
 
-	actor.update = function (dt)
+	self.update = function (dt)
 		-- Update behavior
-		if actor.behavior ~= nil then
-			actor.behavior(actor, dt)
+		if self.behavior ~= nil then
+			self.behavior(self, dt)
 		end
 
 		-- Update animation frame
-	  actor.elapsedTime = actor.elapsedTime + dt
-	  if actor.elapsedTime > actor.animationInterval then
-	    actor.elapsedTime = 0
-	    actor.frameNumber = actor.frameNumber + 1
-	    if actor.frameNumber > actor.frameMax then
-	      actor.frameNumber = actor.frameMin
+	  self.elapsedTime = self.elapsedTime + dt
+	  if self.elapsedTime > self.animationInterval then
+	    self.elapsedTime = 0
+	    self.frameNumber = self.frameNumber + 1
+	    if self.frameNumber > self.frameMax then
+	      self.frameNumber = self.frameMin
 	    end
-	    actor.frame = charactersSmallFrames[actor.frameNumber]
+	    self.frame = charactersSmallFrames[self.frameNumber]
 	  end
 
-		-- Update movement
-	  local offset = actor.speed * dt
-		local previousX = actor.x
-    actor.x = actor.x + (actor.movementVector.x * offset)
-		if tilemap.checkActorCollision(actor) then
-			actor.x = previousX
+		-- Update movement ...
+
+	  local offset = self.speed * dt
+		local previousX = self.x
+    self.x = self.x + (self.movementVector.x * offset)
+		if tilemap.checkActorCollision(self) then
+			self.x = previousX
 		end
 
-		local previousY = actor.y
-    actor.y = actor.y + (actor.movementVector.y * offset)
-		if tilemap.checkActorCollision(actor) then
-			actor.y = previousY
+		local previousY = self.y
+    self.y = self.y + (self.movementVector.y * offset)
+		if tilemap.checkActorCollision(self) then
+			self.y = previousY
 		end
+
+		-- Detect collision with other actors
+	  -- for actorId, actor in pairs(actors) do
+		-- end
 
 	end
 
-	actors[actorId] = actor;
-	return actor;
+	actors[actorId] = self;
+	return self;
 end
