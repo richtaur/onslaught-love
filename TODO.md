@@ -9,8 +9,9 @@
 	+ add proximity
 		- min
 		+ max
-	- smoother movement ramp
+	+ smoother movement ramp
 
+- press k to kill all goblins
 - add env collision / limits
 - press space to spawn weapon
 	- move
