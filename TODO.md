@@ -5,8 +5,9 @@
 		+ actorData.speed
 	+ use arrow keys to spawn weapon
 	+ add env collision / limits
-		- add a tilemap
-		- load tiles from string/array data
+		+ add a tilemap
+		+ load tiles from string/array data
+			- draw as debug
 		- destroy weapon on collision
 		- destroy goblin on collision
 		- constrain player within tiles

@@ -12,6 +12,7 @@ require("vector")
 
 -- Setup
 charactersSmallFrames = {}
+objectFrames = {}
 paused = false
 
 -- Actors
@@ -26,7 +27,6 @@ function love.load()
 
   -- Load the small characters sprite sheet and assign frames
   charactersSmallImage = love.graphics.newImage("images/sheet_characters_small.png")
-
   sheetIndex = 0
   for y = 0, 21 do
     for x = 0, 21 do
@@ -36,6 +36,16 @@ function love.load()
   end
 
 	player.frame = charactersSmallFrames[player.frameNumber]
+
+  -- Load objects and sprite sheet
+  objectsImage = love.graphics.newImage("images/sheet_objects.png")
+  sheetIndex = 0
+  for y = 0, 8 do
+    for x = 0, 12 do
+    	objectFrames[sheetIndex] = love.graphics.newQuad(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, objectsImage:getDimensions())
+      sheetIndex = sheetIndex + 1
+    end
+  end
 
   -- Sounds
   monsterDamageSound = love.audio.newSource("sounds/monster_damage.mp3", "static")
