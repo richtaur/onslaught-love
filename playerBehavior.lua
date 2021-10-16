@@ -1,5 +1,8 @@
 playerBehavior = function (self, dt)
-	print("player behavior")
+	print("player behavior ...")
+	if self.life <= 0 then
+		return
+	end
 
 	-- Movement
 	self.movementVector.x = 0;
@@ -16,26 +19,35 @@ playerBehavior = function (self, dt)
 		self.movementVector.x = 1
 	end
 
-	-- Projectiles
-	if self.life > 0 then
-		local aimVector = makeVector(0, 0)
-		if keyIsDown("left") then
-			aimVector.x = -1
-		elseif keyIsDown("right") then
-			aimVector.x = 1
-		end
-		if keyIsDown("up") then
-			aimVector.y = -1
-		elseif keyIsDown("down") then
-			aimVector.y = 1
-		end
-		if aimVector.x ~= 0 or aimVector.y ~= 0 then
-			-- Spawn a weapon at this tile
-			local actor = makeActor(actorData.sword, self.team)
-			actor.x = self.x
-			actor.y = self.y
-			actor.frame = charactersSmallFrames[actor.frameNumber]
-			actor.movementVector = aimVector
-		end
+	-- Cooldown
+	self.behaviorConfig.cooldownElapsed = self.behaviorConfig.cooldownElapsed + dt
+	if self.behaviorConfig.cooldownElapsed < self.behaviorConfig.cooldownDuration then
+		print("cooling down ...")
+		return
 	end
+
+	-- Projectiles
+	local aimVector = makeVector(0, 0)
+	if keyIsDown("left") then
+		aimVector.x = -1
+	elseif keyIsDown("right") then
+		aimVector.x = 1
+	end
+	if keyIsDown("up") then
+		aimVector.y = -1
+	elseif keyIsDown("down") then
+		aimVector.y = 1
+	end
+	if aimVector.x ~= 0 or aimVector.y ~= 0 then
+		-- Reset cooldown
+		self.behaviorConfig.cooldownElapsed = 0
+
+		-- Spawn a weapon at this tile
+		local actor = makeActor(actorData.sword, self.team)
+		actor.x = self.x
+		actor.y = self.y
+		actor.frame = charactersSmallFrames[actor.frameNumber]
+		actor.movementVector = aimVector
+	end
+
 end

@@ -1,8 +1,5 @@
 # TODO
 
-+ add player behavior
-	- add attack cooldown
-
 - add folder for lua files
 - add ability to mute music
 	- settings menu?
