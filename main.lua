@@ -9,6 +9,7 @@ TEAM_MONSTER = 2
 
 require("lua/actor")
 require("lua/actorData")
+require("lua/sounds")
 require("lua/tilemap")
 require("lua/toolbox")
 require("lua/vector")
@@ -51,7 +52,7 @@ function love.load ()
 	end
 
 	-- Sounds
-	monsterDamageSound = love.audio.newSource("sounds/monster_damage.mp3", "static")
+	sounds.load();
 
 	-- Music
 	sewersMusic = love.audio.newSource("music/sewers.mp3", "stream")
@@ -92,7 +93,7 @@ function love.keypressed (key)
 
 	-- Space key (debugging for now)
 	if key == "space" then
-		love.audio.play(monsterDamageSound)
+		sounds.play("monsterDamageSound")
 		print("test")
 
 		-- Kill all actors not in team 1

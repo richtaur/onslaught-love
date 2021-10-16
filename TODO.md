@@ -1,10 +1,13 @@
 # TODO
 
-- add sounds
++ add sounds
 	- attack
-	- goblin die
+	+ goblin die
 	- weapon hit wall
 	- spawn goblin
+
+- clean up image references
+	- use sword imagfe
 
 - implement states
 	- stun

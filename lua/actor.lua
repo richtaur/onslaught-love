@@ -23,12 +23,17 @@ makeActor = function (data, team)
 	self.behaviorConfig = data.behaviorConfig
 	self.damage = data.damage
 	self.damageFromTilemap = data.damageFromTilemap
+	self.damageSound = data.damageSound
 	self.life = data.life
 	self.frameMin = data.frameMin
 	self.frameMax = data.frameMax
 	self.frameNumber = self.frameMin
 
 	self.collide = function (actor)
+		if self.damageSound ~= nil then
+			sounds.play(self.damageSound)
+		end
+
 		actor.life = actor.life - self.damage
 	end
 

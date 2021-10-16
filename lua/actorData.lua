@@ -27,6 +27,7 @@ actorData.goblin.frameMin = 118
 actorData.goblin.frameMax = 119
 actorData.goblin.damage = 1
 actorData.goblin.damageFromTilemap = 0
+actorData.goblin.damageSound = "monsterDamageSound"
 actorData.goblin.life = 1
 actorData.goblin.speed = 2
 actorData.goblin.speedMax = 2
