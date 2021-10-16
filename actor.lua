@@ -20,6 +20,7 @@ makeActor = function (data, team)
 	self.behavior = data.behavior
 	self.behaviorConfig = data.behaviorConfig
 	self.damage = data.damage
+	self.damageFromTilemap = data.damageFromTilemap
 	self.life = data.life
 	self.frameMin = data.frameMin
 	self.frameMax = data.frameMax
@@ -50,15 +51,22 @@ makeActor = function (data, team)
 
 		local offset = self.speed * dt
 		local previousX = self.x
+		local tilemapCollision = false
 		self.x = self.x + (self.movementVector.x * offset)
 		if tilemap.checkActorCollision(self) then
 			self.x = previousX
+			tilemapCollision = true
 		end
 
 		local previousY = self.y
 		self.y = self.y + (self.movementVector.y * offset)
 		if tilemap.checkActorCollision(self) then
 			self.y = previousY
+			tilemapCollision = true
+		end
+
+		if tilemapCollision and self.damageFromTilemap > 0 then
+			self.life = self.life - self.damageFromTilemap
 		end
 
 		-- Detect collision with other actors
@@ -67,7 +75,6 @@ makeActor = function (data, team)
 				if actor.team ~= self.team then
 					-- Check collision on this dude
 					if toolbox.actorsCollide(actor, self) then
-						print("COLLIDED")
 						self.collide(actor)
 						actor.collide(self)
 					end
