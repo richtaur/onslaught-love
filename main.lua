@@ -5,7 +5,7 @@ require("actorData")
 SCREEN_WIDTH = 1024
 SCREEN_HEIGHT = 768
 MARGIN = 16
-SPRITE_SIZE = 32
+TILE_SIZE = 32
 
 -- Setup
 charactersSmallFrames = {}
@@ -31,13 +31,13 @@ function love.load()
   sheetIndex = 0
   for y = 0, 21 do
     for x = 0, 21 do
-    	charactersSmallFrames[sheetIndex] = love.graphics.newQuad(x * SPRITE_SIZE, y * SPRITE_SIZE, SPRITE_SIZE, SPRITE_SIZE, charactersSmallImage:getDimensions())
+    	charactersSmallFrames[sheetIndex] = love.graphics.newQuad(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, charactersSmallImage:getDimensions())
       sheetIndex = sheetIndex + 1
     end
   end
 
-	-- charactersSmallFrames[1] = love.graphics.newQuad(8 * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE, charactersSmallImage:getDimensions())
-	-- charactersSmallFrames[2] = love.graphics.newQuad(9 * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE, charactersSmallImage:getDimensions())
+	-- charactersSmallFrames[1] = love.graphics.newQuad(8 * TILE_SIZE, 0, TILE_SIZE, TILE_SIZE, charactersSmallImage:getDimensions())
+	-- charactersSmallFrames[2] = love.graphics.newQuad(9 * TILE_SIZE, 0, TILE_SIZE, TILE_SIZE, charactersSmallImage:getDimensions())
 
 	player.frame = charactersSmallFrames[player.frameNumber]
 	goblin.frame = charactersSmallFrames[goblin.frameNumber]
@@ -85,6 +85,12 @@ function love.keypressed(key)
     love.audio.play(monsterDamageSound)
     print("test")
   end
+end
+
+function love.mousepressed(x, y, button, istouch, presses)
+  local tileX = math.floor(x / TILE_SIZE)
+  local tileY = math.floor(y / TILE_SIZE)
+  print("Clicked tile: " .. tileX .. ", " .. tileY)
 end
 
 function love.update(dt)

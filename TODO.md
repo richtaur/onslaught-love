@@ -4,8 +4,8 @@
 	+ use goblin sprite
 	+ animate goblin
 	- add goblin behavior
-- click to spawn goblin
-	- detect click
++ click to spawn goblin
+	+ detect click
 	- spawn goblin
 
 - add env collision / limits

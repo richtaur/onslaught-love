@@ -12,7 +12,7 @@ makeActor = function(actorData)
 	actor.frameMin = actorData.frameMin
 	actor.frameMax = actorData.frameMax
 	actor.frameNumber = actor.frameMin
-	actor.speed = SPRITE_SIZE * 4 -- tiles per second
+	actor.speed = TILE_SIZE * 4 -- tiles per second
 	actor.x = 320
 	actor.y = 240
 
