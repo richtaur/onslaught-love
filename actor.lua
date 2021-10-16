@@ -1,7 +1,7 @@
 actors = {}
 actorId = 0;
 
-makeActor = function()
+makeActor = function(actorData)
 	actorId = actorId + 1
 
 	actor = {}
@@ -9,7 +9,9 @@ makeActor = function()
 	actor.elapsedTime = 0
 	actor.animationInterval = 0.5
 	actor.frame = 0
-	actor.frameNumber = 1
+	actor.frameMin = actorData.frameMin
+	actor.frameMax = actorData.frameMax
+	actor.frameNumber = actor.frameMin
 	actor.speed = SPRITE_SIZE * 4 -- tiles per second
 	actor.x = 320
 	actor.y = 240

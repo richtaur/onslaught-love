@@ -1,8 +1,10 @@
 # TODO
 
-- add a goblin
++ add a goblin
+	+ use goblin sprite
 	- animate goblin
 	- add goblin behavior
+- click to spawn goblin
 - add env collision
 - press space to spawn weapon
 	- move

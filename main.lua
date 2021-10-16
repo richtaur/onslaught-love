@@ -1,4 +1,5 @@
 require("actor")
+require("actorData")
 
 -- Constants (fake)
 SCREEN_WIDTH = 1024
@@ -11,7 +12,9 @@ charactersSmallFrames = {}
 paused = false
 text = "Centered Text Hi"
 
-player = makeActor()
+-- Actors
+player = makeActor(actorData.player)
+goblin = makeActor(actorData.goblin)
 
 -- Functions ...
 keyIsDown = love.keyboard.isDown
@@ -22,9 +25,20 @@ function love.load()
 
   -- Load the small characters sprite sheet and assign frames
   charactersSmallImage = love.graphics.newImage("images/sheet_characters_small.png")
-	charactersSmallFrames[1] = love.graphics.newQuad(8 * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE, charactersSmallImage:getDimensions())
-	charactersSmallFrames[2] = love.graphics.newQuad(9 * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE, charactersSmallImage:getDimensions())
+
+  sheetIndex = 0
+  for y = 0, 21 do
+    for x = 0, 21 do
+    	charactersSmallFrames[sheetIndex] = love.graphics.newQuad(x * SPRITE_SIZE, y * SPRITE_SIZE, SPRITE_SIZE, SPRITE_SIZE, charactersSmallImage:getDimensions())
+      sheetIndex = sheetIndex + 1
+    end
+  end
+
+	-- charactersSmallFrames[1] = love.graphics.newQuad(8 * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE, charactersSmallImage:getDimensions())
+	-- charactersSmallFrames[2] = love.graphics.newQuad(9 * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE, charactersSmallImage:getDimensions())
+
 	player.frame = charactersSmallFrames[player.frameNumber]
+	goblin.frame = charactersSmallFrames[goblin.frameNumber]
 
   -- Sound effect?
   -- sound = love.audio.newSource("sounds/monster_damage", "stream")
@@ -40,9 +54,9 @@ end
 function love.draw()
   love.graphics.draw(envSewerImage, 0, 0)
 
-  -- love.graphics.draw(charactersSmallImage, 0, 0)
-  -- Draw player
+  -- Draw actors
   love.graphics.draw(charactersSmallImage, player.frame, player.x, player.y)
+  love.graphics.draw(charactersSmallImage, goblin.frame, goblin.x, goblin.y)
 
   love.graphics.print(text, MARGIN, SCREEN_HEIGHT - (MARGIN * 2))
 
@@ -94,8 +108,8 @@ function love.update(dt)
   if player.elapsedTime > player.animationInterval then
     player.elapsedTime = 0
     player.frameNumber = player.frameNumber + 1
-    if player.frameNumber > 2 then
-      player.frameNumber = 1
+    if player.frameNumber > player.frameMax then
+      player.frameNumber = player.frameMin
     end
     player.frame = charactersSmallFrames[player.frameNumber]
   end
