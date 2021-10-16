@@ -12,7 +12,19 @@ chaseBehavior = function(self, dt)
 	end
 
 	-- Chase the target
-	-- local target = self.target
-	-- if self.x < target.x then
-	--	self.x 
+	local movementVector = self.movementVector
+	movementVector.x = 0
+	movementVector.y = 0
+
+	local target = self.target
+	if self.x < target.x then
+		movementVector.x = 1
+	elseif self.x > target.x then
+		movementVector.x = -1
+	end
+	if self.y < target.y then
+		movementVector.y = 1
+	elseif self.y > target.y then
+		movementVector.y = -1
+	end
 end

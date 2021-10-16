@@ -5,7 +5,10 @@
 	+ move towards that target
 		+ add movementVector
 		+ use for player input
-		- use for chase behavior
+		+ use for chase behavior
+	- add proximity
+		- min
+		- max
 
 - add env collision / limits
 - press space to spawn weapon
