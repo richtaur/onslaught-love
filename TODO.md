@@ -1,13 +1,11 @@
 # TODO
 
-- detect actor/actor collision
-	+ assign sword player team
++ detect weapon/goblin collision
+	- destroy goblin on collision with weapon
+	- destroy weapon on collision with goblin
 - destroy weapon on tilemap collision
-	- detect weapon/goblin collision
-		- destroy goblin on collision with weapon
-		- destroy weapon on collision with goblin
-	- detect goblin/player collide
-		- end game on goblin/player collide
+- detect goblin/player collide
+	- end game on goblin/player collide
 
 - hold shift to run
 - add attack cooldown

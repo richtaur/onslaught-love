@@ -56,8 +56,16 @@ makeActor = function (data, team)
 		end
 
 		-- Detect collision with other actors
-		-- for actorId, actor in pairs(actors) do
-		-- end
+		for key, actor in pairs(actors) do
+			if key ~= actorId then
+				if actor.team ~= self.team then
+					-- Check collision on this dude
+					if toolbox.actorsCollide(actor, self) then
+						print("COLLIDED")
+					end
+				end
+			end
+		end
 
 	end
 

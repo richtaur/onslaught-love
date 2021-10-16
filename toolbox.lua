@@ -1,5 +1,15 @@
 toolbox = {}
 
+function toolbox.actorsCollide (actorA, actorB)
+	if actorA.x < actorB.x + TILE_SIZE and
+		actorA.x + TILE_SIZE > actorB.x and
+		actorA.y < actorB.y + TILE_SIZE and
+		actorA.y + TILE_SIZE > actorB.y then
+			return true
+		end
+	return false
+end
+
 function toolbox.distance (x1, y1, x2, y2)
 	local dx = x1 - x2
 	local dy = y1 - y2

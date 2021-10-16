@@ -64,7 +64,7 @@ function love.draw ()
 	tilemap.draw()
 
 	-- Draw actors
-	for actorId, actor in pairs(actors) do
+	for key, actor in pairs(actors) do
 		love.graphics.draw(charactersSmallImage, actor.frame, actor.x, actor.y)
 	end
 
@@ -103,8 +103,6 @@ function love.keypressed (key)
 		aimVector.y = 1
 	end
 	if aimVector.x ~= 0 or aimVector.y ~= 0 then
-		print("spawn");
-
 		-- Spawn a weapon at this tile
 		local actor = makeActor(actorData.sword, player.team)
 		actor.x = player.x
@@ -119,10 +117,9 @@ function love.keypressed (key)
 		print("test")
 
 		-- Kill all actors not in team 1
-		for actorId, actor in pairs(actors) do
+		for key, actor in pairs(actors) do
 			if actor.team ~= 1 then
-				-- actors.remove(actorId)
-				actors[actorId] = nil
+				actors[key] = nil
 			end
 		end
 	end
@@ -161,7 +158,7 @@ function love.update (dt)
 	end
 
 	-- Update actors
-	for actorId, actor in pairs(actors) do
+	for key, actor in pairs(actors) do
 		actor.update(dt)
 	end
 end
