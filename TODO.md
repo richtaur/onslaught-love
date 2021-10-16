@@ -10,6 +10,7 @@
 - save some data
 	- load that data
 
-- add a window name
-- implement fullscreen
-- change resolution (e.g. 400x240)
++ add a window name
++ implement fullscreen
++ change resolution (e.g. 400x240)
+	- use constants for resolution

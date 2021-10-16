@@ -1,3 +1,3 @@
 function love.draw()
-    love.graphics.print("Hello World", 400, 240)
+    love.graphics.print("Centered Text Hi", 200, 120)
 end
