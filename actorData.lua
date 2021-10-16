@@ -1,9 +1,12 @@
 require("chaseBehavior")
+require("playerBehavior")
 
 actorData = {}
 
+-- Player
 actorData.player = {}
-actorData.player.behavior = nil
+actorData.player.behavior = playerBehavior;
+actorData.player.behaviorConfig = {};
 actorData.player.frameMin = 8
 actorData.player.frameMax = 9
 actorData.player.damage = 0
@@ -12,6 +15,7 @@ actorData.player.life = 1
 actorData.player.speed = 4
 actorData.player.speedMax = 8
 
+-- Goblin
 actorData.goblin = {}
 actorData.goblin.behavior = chaseBehavior;
 actorData.goblin.behaviorConfig = {};
@@ -25,6 +29,7 @@ actorData.goblin.life = 1
 actorData.goblin.speed = 2
 actorData.goblin.speedMax = 2
 
+-- Sword
 actorData.sword = {}
 actorData.sword.frameMin = 22
 actorData.sword.frameMax = 22

@@ -90,29 +90,6 @@ function love.keypressed (key)
 		end
 	end
 
-	-- Projectiles
-	if player.life > 0 then
-		local aimVector = makeVector(0, 0)
-		if key == "left" then
-			aimVector.x = -1
-		elseif key == "right" then
-			aimVector.x = 1
-		end
-		if key == "up" then
-			aimVector.y = -1
-		elseif key == "down" then
-			aimVector.y = 1
-		end
-		if aimVector.x ~= 0 or aimVector.y ~= 0 then
-			-- Spawn a weapon at this tile
-			local actor = makeActor(actorData.sword, player.team)
-			actor.x = player.x
-			actor.y = player.y
-			actor.frame = charactersSmallFrames[actor.frameNumber]
-			actor.movementVector = aimVector
-		end
-	end
-
 	-- Space key (debugging for now)
 	if key == "space" then
 		love.audio.play(monsterDamageSound)
@@ -143,21 +120,6 @@ function love.update (dt)
 	-- Paused: do nothing
 	if paused then
 		return
-	end
-
-	-- Player movement
-	player.movementVector.x = 0;
-	player.movementVector.y = 0;
-	player.running = keyIsDown("lshift") or keyIsDown("rshift")
-	if keyIsDown("w") then
-		player.movementVector.y = -1
-	elseif keyIsDown("s") then
-		player.movementVector.y = 1
-	end
-	if keyIsDown("a") then
-		player.movementVector.x = -1
-	elseif keyIsDown("d") then
-		player.movementVector.x = 1
 	end
 
 	-- Update actors
