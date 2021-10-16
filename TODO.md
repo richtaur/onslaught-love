@@ -1,6 +1,8 @@
 # TODO
 
 - add goblin behavior
+	- find a target on the other team
+	- move towards that target
 
 - add env collision / limits
 - press space to spawn weapon

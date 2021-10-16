@@ -13,7 +13,7 @@ paused = false
 text = "Centered Text Hi"
 
 -- Actors
-player = makeActor(actorData.player)
+player = makeActor(actorData.player, 1)
 
 -- Functions ...
 keyIsDown = love.keyboard.isDown
@@ -92,7 +92,7 @@ function love.mousepressed(x, y, button, istouch, presses)
   print("Clicked tile: " .. tileX .. ", " .. tileY)
 
   -- Spawn a goblin at this tile
-  local actor = makeActor(actorData.goblin)
+  local actor = makeActor(actorData.goblin, 0)
   actor.x = tileX * TILE_SIZE
   actor.y = tileY * TILE_SIZE
 	actor.frame = charactersSmallFrames[actor.frameNumber]
