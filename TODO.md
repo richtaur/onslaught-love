@@ -1,9 +1,9 @@
 # TODO
 
 + add sounds
-	- attack
+	+ attack
 	+ goblin die
-	- weapon hit wall
+	+ weapon hit wall
 	- spawn goblin
 
 - clean up image references

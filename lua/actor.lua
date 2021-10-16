@@ -30,11 +30,17 @@ makeActor = function (data, team)
 	self.frameNumber = self.frameMin
 
 	self.collide = function (actor)
+		if self.damage > 0 then
+			actor.takeDamage(self.damage)
+		end
+	end
+
+	self.takeDamage = function (damage)
 		if self.damageSound ~= nil then
 			sounds.play(self.damageSound)
 		end
 
-		actor.life = actor.life - self.damage
+		self.life = self.life - damage
 	end
 
 	self.update = function (dt)
@@ -76,7 +82,7 @@ makeActor = function (data, team)
 		end
 
 		if tilemapCollision and self.damageFromTilemap > 0 then
-			self.life = self.life - self.damageFromTilemap
+			self.takeDamage(self.damageFromTilemap)
 		end
 
 		-- Detect collision with other actors

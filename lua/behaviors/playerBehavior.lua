@@ -46,6 +46,8 @@ playerBehavior = function (self, dt)
 		actor.y = self.y
 		actor.frame = charactersSmallFrames[actor.frameNumber]
 		actor.movementVector = aimVector
+
+		sounds.play("charAttacks")
 	end
 
 end

@@ -38,6 +38,7 @@ actorData.sword.frameMin = 22
 actorData.sword.frameMax = 22
 actorData.sword.damage = 1
 actorData.sword.damageFromTilemap = 1
+actorData.sword.damageSound = "weaponWall"
 actorData.sword.life = 1
 actorData.sword.speed = 12
 actorData.sword.speedMax = 12
