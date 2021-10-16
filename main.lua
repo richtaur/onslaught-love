@@ -1,5 +1,6 @@
 require("actor")
 require("actorData")
+require("vector")
 
 -- Constants (fake)
 SCREEN_WIDTH = 1024
@@ -105,19 +106,20 @@ function love.update(dt)
   end
 
   -- Player movement
-  playerOffset = player.speed * dt
+  player.movementVector.x = 0;
+  player.movementVector.y = 0;
   if keyIsDown("up") or keyIsDown("w") then
-    player.y = player.y - playerOffset
+    player.movementVector.y = -1
   elseif keyIsDown("down") or keyIsDown("s") then
-    player.y = player.y + playerOffset
+    player.movementVector.y = 1
   end
   if keyIsDown("left") or keyIsDown("a") then
-    player.x = player.x - playerOffset
+    player.movementVector.x = -1
   elseif keyIsDown("right") or keyIsDown("d") then
-    player.x = player.x + playerOffset
+    player.movementVector.x = 1
   end
 
-  -- Actor animations
+  -- Update actors
   for actorId, actor in pairs(actors) do
     actor.update(dt)
   end

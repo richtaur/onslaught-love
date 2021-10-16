@@ -12,6 +12,7 @@ makeActor = function(data, team)
 	actor.animationInterval = 0.5
 	actor.frame = nil
 	actor.speed = TILE_SIZE * 4 -- tiles per second
+	actor.movementVector = makeVector(0, 0)
 	actor.x = 320
 	actor.y = 240
 
@@ -37,6 +38,11 @@ makeActor = function(data, team)
 	    end
 	    actor.frame = charactersSmallFrames[actor.frameNumber]
 	  end
+
+		-- Update movement
+	  local offset = actor.speed * dt
+    actor.x = actor.x + (actor.movementVector.x * offset)
+    actor.y = actor.y + (actor.movementVector.y * offset)
 	end
 
 	actors[actorId] = actor;
