@@ -24,7 +24,7 @@ makeActor = function(data, team)
 	actor.update = function(dt)
 		-- Update behavior
 		if actor.behavior ~= nil then
-			actor.behavior(dt)
+			actor.behavior(actor, dt)
 		end
 
 		-- Update animation frame
