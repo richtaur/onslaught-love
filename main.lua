@@ -9,9 +9,10 @@ charactersSmallFrames = {}
 text = "Centered Text Hi"
 
 -- Player
-elapsedTime = 0
-playerAnimationInterval = 0.5
-playerFrameNumber = 1
+player = {}
+player.elapsedTime = 0
+player.animationInterval = 0.5
+player.frameNumber = 1
 
 -- Functions ...
 
@@ -23,7 +24,7 @@ function love.load()
   charactersSmallImage = love.graphics.newImage("images/sheet_characters_small.png")
 	charactersSmallFrames[1] = love.graphics.newQuad(8 * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE, charactersSmallImage:getDimensions())
 	charactersSmallFrames[2] = love.graphics.newQuad(9 * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE, charactersSmallImage:getDimensions())
-	charactersSmallFrame = charactersSmallFrames[playerFrameNumber]
+	charactersSmallFrame = charactersSmallFrames[player.frameNumber]
 
   -- Sound effect?
   -- sound = love.audio.newSource("sounds/monster_damage", "stream")
@@ -56,15 +57,15 @@ function love.keypressed(key)
 end
 
 function love.update(dt)
-  elapsedTime = elapsedTime + dt
+  player.elapsedTime = player.elapsedTime + dt
 
-  if elapsedTime > playerAnimationInterval then
-    elapsedTime = 0
-    playerFrameNumber = playerFrameNumber + 1
-    if playerFrameNumber > 2 then
-      playerFrameNumber = 1
+  if player.elapsedTime > player.animationInterval then
+    player.elapsedTime = 0
+    player.frameNumber = player.frameNumber + 1
+    if player.frameNumber > 2 then
+      player.frameNumber = 1
     end
-    charactersSmallFrame = charactersSmallFrames[playerFrameNumber]
+    charactersSmallFrame = charactersSmallFrames[player.frameNumber]
   end
 
 end
