@@ -18,6 +18,9 @@ function love.load()
   -- Sound effect?
   -- sound = love.audio.newSource("sounds/monster_damage", "stream")
 
+  -- Sounds
+  monsterDamageSound = love.audio.newSource("sounds/monster_damage.mp3", "static")
+
   -- Music
   -- winMusic = love.audio.newSource("music/win.mp3", "stream")
   -- love.audio.play(winMusic)
@@ -35,7 +38,9 @@ end
 function love.keypressed(key)
   if key == 'up' then
     text = "up"
+    love.audio.play(monsterDamageSound)
   elseif key == 'down' then
     text = "down"
+    love.audio.play(monsterDamageSound)
   end
 end

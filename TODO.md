@@ -6,7 +6,7 @@
 	- animate
 + detect keyboard input
 	- log to console etc.
-- play a sound
++ play a sound
 + play music
 - switch scenes
 	- transition between them
