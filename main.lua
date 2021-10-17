@@ -1,14 +1,8 @@
--- Constants (fake)
-SCREEN_WIDTH = 1024
-SCREEN_HEIGHT = 768
-MARGIN = 16
-TILE_SIZE = 32
-
-TEAM_PLAYER = 1
-TEAM_MONSTER = 2
-
+require("lua/definitions")
 require("lua/actor")
 require("lua/actorData")
+require("lua/disk")
+require("lua/gameData")
 require("lua/images")
 require("lua/sounds")
 require("lua/tilemap")
@@ -17,7 +11,6 @@ require("lua/vector")
 
 -- Setup
 paused = false
-playMusic = true
 
 -- Functions ...
 keyIsDown = love.keyboard.isDown
@@ -27,8 +20,11 @@ function love.load ()
 	images.load()
 	sounds.load()
 
+	-- Load game data
+	disk.load()
+
 	-- Music
-	if playMusic then
+	if gameData.values.playMusic then
 		love.audio.play(sounds.sources.sewersMusic)
 	end
 
@@ -61,7 +57,7 @@ function love.keypressed (key)
 	if key == "escape" then
 		if paused then
 			paused = false
-			if playMusic then
+			if gameData.values.playMusic then
 				love.audio.play(sounds.sources.sewersMusic)
 			end
 		else
@@ -72,13 +68,14 @@ function love.keypressed (key)
 
 	-- M to toggle music
 	if key == "m" and not paused then
-		if playMusic then
-			playMusic = false
+		if gameData.values.playMusic then
+			gameData.values.playMusic = false
 			love.audio.pause(sounds.sources.sewersMusic)
 		else
-			playMusic = true
+			gameData.values.playMusic = true
 			love.audio.play(sounds.sources.sewersMusic)
 		end
+		disk.save()
 	end
 
 	-- Space key (debugging for now)
