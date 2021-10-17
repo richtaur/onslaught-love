@@ -1,7 +1,6 @@
 # TODO
 
 - implement goblin attack behavior
-
 - implement states
 	- stun
 	- pain
@@ -10,8 +9,5 @@
 
 - save playMusic data
 	- load playMusic data
-
-- switch scenes
-	- transition between them
-	- stop/start music
-		- loop music
+- add title scene
+	- transition between scenes
