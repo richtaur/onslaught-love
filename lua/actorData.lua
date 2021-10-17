@@ -36,12 +36,13 @@ actorData.goblin.speedMax = 2
 
 -- Sword
 actorData.sword = {}
-actorData.sword.frameMin = 6
-actorData.sword.frameMax = 6
+actorData.sword.frameMin = 2
+actorData.sword.frameMax = 2
 actorData.sword.damage = 1
 actorData.sword.damageFromTilemap = 1
 actorData.sword.damageSound = "weaponWall"
 actorData.sword.imageKey = "objects"
 actorData.sword.life = 1
+actorData.sword.rotateWithTrajectory = true
 actorData.sword.speed = 12
 actorData.sword.speedMax = 12

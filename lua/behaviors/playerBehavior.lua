@@ -46,6 +46,10 @@ playerBehavior = function (self, dt)
 		actor.y = self.y
 		actor.movementVector = aimVector
 
+		if actor.rotateWithTrajectory then
+			actor.rotation = math.atan2(aimVector.x, -aimVector.y)
+		end
+
 		sounds.play("charAttacks")
 	end
 

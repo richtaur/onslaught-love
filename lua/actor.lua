@@ -10,6 +10,7 @@ makeActor = function (data, team)
 	self.target = nil
 	self.elapsedTime = 0
 	self.animationInterval = 0.5
+	self.rotation = 0
 	self.speed = data.speed * TILE_SIZE
 	self.speedMax = data.speedMax * TILE_SIZE
 	self.running = false
@@ -29,6 +30,7 @@ makeActor = function (data, team)
 	self.frameMax = data.frameMax
 	self.frameNumber = self.frameMin
 	self.frame = images.frames[self.imageKey][self.frameNumber]
+	self.rotateWithTrajectory = data.rotateWithTrajectory
 
 	-- Methods ...
 
@@ -84,11 +86,12 @@ makeActor = function (data, team)
 			tilemapCollision = true
 		end
 
+		-- Collision with tilemap
 		if tilemapCollision and self.damageFromTilemap > 0 then
 			self.takeDamage(self.damageFromTilemap)
 		end
 
-		-- Detect collision with other actors
+		-- Collision with other actors
 		for key, actor in pairs(actors) do
 			if self.life <= 0 then
 				break

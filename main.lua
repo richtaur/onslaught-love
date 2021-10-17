@@ -25,7 +25,7 @@ function love.load ()
 
 	-- Music
 	if gameData.values.playMusic then
-		love.audio.play(sounds.sources.sewersMusic)
+		-- love.audio.play(sounds.sources.sewersMusic)
 	end
 
 	-- Player
@@ -38,8 +38,10 @@ function love.draw ()
 	-- tilemap.draw() -- DEBUG: show the tilemap
 
 	-- Draw actors
+	local halfTile = TILE_SIZE / 2
 	for key, actor in pairs(actors) do
-		love.graphics.draw(images.sources[actor.imageKey], actor.frame, actor.x, actor.y)
+		-- love.graphics.rectangle("fill", actor.x, actor.y, TILE_SIZE, TILE_SIZE, 0, 0); -- DEBUG: draw rectangle behind sprite
+		love.graphics.draw(images.sources[actor.imageKey], actor.frame, actor.x + halfTile, actor.y + halfTile, actor.rotation, 1, 1, halfTile, halfTile)
 	end
 
 	-- Paused notification

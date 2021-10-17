@@ -1,7 +1,5 @@
 # TODO
 
-- use sword image
-	- rotate sword in velocity direction
 - implement goblin attack behavior
 
 - implement states
