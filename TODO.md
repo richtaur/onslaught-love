@@ -1,10 +1,7 @@
 # TODO
 
-+ add ability to mute music
-	+ press M to toggle music
-	- loop music
-	- save that data
-		- load that data
+- save playMusic data
+	- load playMusic data
 
 - implement states
 	- stun
