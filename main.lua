@@ -17,6 +17,7 @@ require("lua/vector")
 
 -- Setup
 paused = false
+playMusic = true
 
 -- Functions ...
 keyIsDown = love.keyboard.isDown
@@ -28,7 +29,9 @@ function love.load ()
 
 	-- Music
 	sewersMusic = love.audio.newSource("music/sewers.mp3", "stream")
-	-- love.audio.play(sewersMusic)
+	if playMusic then
+		love.audio.play(sewersMusic)
+	end
 
 	-- Player
 	makeActor(actorData.player, TEAM_PLAYER)
@@ -59,10 +62,23 @@ function love.keypressed (key)
 	if key == "escape" then
 		if paused then
 			paused = false
-			love.audio.play(sewersMusic)
+			if playMusic then
+				love.audio.play(sewersMusic)
+			end
 		else
 			paused = true
 			love.audio.pause(sewersMusic)
+		end
+	end
+
+	-- M to toggle music
+	if key == "m" and not paused then
+		if playMusic then
+			playMusic = false
+			love.audio.pause(sewersMusic)
+		else
+			playMusic = true
+			love.audio.play(sewersMusic)
 		end
 	end
 
