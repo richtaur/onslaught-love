@@ -52,9 +52,9 @@ function love.draw ()
 		love.graphics.print("PAUSED", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0, 4)
 	end
 
-	-- DEBUG text
-	local controlsText = "Click to spawn goblin\nPress SPACE to kill all goblins"
-	love.graphics.print(controlsText, MARGIN, SCREEN_HEIGHT - (MARGIN * 4), 0, 2)
+	-- Controls / how to play text
+	local controlsText = "Click to spawn goblin\nPress M to toggle music\nPress SPACE to kill all goblins"
+	love.graphics.print(controlsText, MARGIN, SCREEN_HEIGHT - 100, 0, 1.5)
 end
 
 function love.keypressed (key)
