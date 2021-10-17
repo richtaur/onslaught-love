@@ -1,7 +1,8 @@
 # TODO
 
-- save playMusic data
-	- load playMusic data
+- use sword image
+	- rotate sword in velocity direction
+- implement goblin attack behavior
 
 - implement states
 	- stun
@@ -9,10 +10,10 @@
 	- death?
 	- use higher life
 
+- save playMusic data
+	- load playMusic data
+
 - switch scenes
 	- transition between them
 	- stop/start music
 		- loop music
-
-- use sword image
-	- rotate sword in velocity direction
