@@ -28,9 +28,8 @@ function love.load ()
 	sounds.load()
 
 	-- Music
-	sewersMusic = love.audio.newSource("music/sewers.mp3", "stream")
 	if playMusic then
-		love.audio.play(sewersMusic)
+		love.audio.play(sounds.sources.sewersMusic)
 	end
 
 	-- Player
@@ -63,11 +62,11 @@ function love.keypressed (key)
 		if paused then
 			paused = false
 			if playMusic then
-				love.audio.play(sewersMusic)
+				love.audio.play(sounds.sources.sewersMusic)
 			end
 		else
 			paused = true
-			love.audio.pause(sewersMusic)
+			love.audio.pause(sounds.sources.sewersMusic)
 		end
 	end
 
@@ -75,10 +74,10 @@ function love.keypressed (key)
 	if key == "m" and not paused then
 		if playMusic then
 			playMusic = false
-			love.audio.pause(sewersMusic)
+			love.audio.pause(sounds.sources.sewersMusic)
 		else
 			playMusic = true
-			love.audio.play(sewersMusic)
+			love.audio.play(sounds.sources.sewersMusic)
 		end
 	end
 

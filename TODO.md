@@ -2,6 +2,7 @@
 
 + add ability to mute music
 	+ press M to toggle music
+	- loop music
 	- save that data
 		- load that data
 
