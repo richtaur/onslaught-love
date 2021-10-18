@@ -1,13 +1,7 @@
 # TODO
 
-- implement goblin attack behavior
-- implement states
-	- stun
-	- pain
-	- death?
-	- use higher life
+- prevent player from dying
+- add some default goblins
 
 - save playMusic data
 	- load playMusic data
-- add title scene
-	- transition between scenes

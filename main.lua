@@ -25,7 +25,7 @@ function love.load ()
 
 	-- Music
 	if gameData.values.playMusic then
-		-- love.audio.play(sounds.sources.sewersMusic)
+		love.audio.play(sounds.sources.sewersMusic)
 	end
 
 	-- Player
