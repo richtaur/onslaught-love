@@ -32,7 +32,18 @@ function love.load ()
 	makeActor(actorData.player, TEAM_PLAYER)
 
 	-- Gates
-	makeActor(actorData.gate, 0)
+	gates = {}
+	gates[1] = makeActor(actorData.gate, 0)
+	gates[1].x = 6 * TILE_SIZE
+	gates[1].y = 0 * TILE_SIZE
+
+	gates[2] = makeActor(actorData.gate, 0)
+	gates[2].x = 15 * TILE_SIZE
+	gates[2].y = 0 * TILE_SIZE
+
+	gates[2] = makeActor(actorData.gate, 0)
+	gates[2].x = 24 * TILE_SIZE
+	gates[2].y = 0 * TILE_SIZE
 end
 
 function love.draw ()
