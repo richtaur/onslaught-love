@@ -5,10 +5,11 @@ actorData = {}
 
 -- Player
 actorData.player = {}
-actorData.player.behavior = playerBehavior;
-actorData.player.behaviorConfig = {};
-actorData.player.behaviorConfig.cooldownDuration = 0.25;
-actorData.player.behaviorConfig.cooldownElapsed = actorData.player.behaviorConfig.cooldownDuration;
+actorData.player.behavior = playerBehavior
+actorData.player.behaviorConfig = {}
+actorData.player.behaviorConfig.cooldownDuration = 0.25
+actorData.player.behaviorConfig.cooldownElapsed = actorData.player.behaviorConfig.cooldownDuration
+actorData.player.collides = true
 actorData.player.frameMin = 8
 actorData.player.frameMax = 9
 actorData.player.damage = 0
@@ -20,10 +21,11 @@ actorData.player.speedMax = 8
 
 -- Goblin
 actorData.goblin = {}
-actorData.goblin.behavior = chaseBehavior;
-actorData.goblin.behaviorConfig = {};
+actorData.goblin.behavior = chaseBehavior
+actorData.goblin.behaviorConfig = {}
 actorData.goblin.behaviorConfig.proximityMin = 3 * TILE_SIZE
 actorData.goblin.behaviorConfig.proximityMax = 5 * TILE_SIZE
+actorData.goblin.collides = true
 actorData.goblin.frameMin = 118
 actorData.goblin.frameMax = 119
 actorData.goblin.damage = 1
@@ -36,6 +38,7 @@ actorData.goblin.speedMax = 2
 
 -- Sword
 actorData.sword = {}
+actorData.sword.collides = true
 actorData.sword.frameMin = 2
 actorData.sword.frameMax = 2
 actorData.sword.damage = 1
@@ -49,6 +52,7 @@ actorData.sword.speedMax = 12
 
 -- Gate
 actorData.gate = {}
+actorData.gate.collides = false
 actorData.gate.imageKey = "gates"
 actorData.gate.frameMin = 4
 actorData.gate.frameMax = 4

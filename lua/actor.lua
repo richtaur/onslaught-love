@@ -21,6 +21,7 @@ makeActor = function (data, team)
 	-- Apply actor data
 	self.behavior = data.behavior
 	self.behaviorConfig = data.behaviorConfig
+	self.collides = data.collides
 	self.damage = data.damage
 	self.damageFromTilemap = data.damageFromTilemap
 	self.damageSound = data.damageSound
@@ -88,6 +89,11 @@ makeActor = function (data, team)
 			tilemapCollision = true
 		end
 
+		-- Option to skip collisions entirely
+		if not self.collides then
+			return
+		end
+
 		-- Collision with tilemap
 		if tilemapCollision and self.damageFromTilemap > 0 then
 			self.takeDamage(self.damageFromTilemap)
@@ -95,15 +101,15 @@ makeActor = function (data, team)
 
 		-- Collision with other actors
 		for key, actor in pairs(actors) do
-			if self.life <= 0 then
-				break
-			end
-			if key ~= actorId then -- Skip self
+			if key ~= actorId and actor.collides then
 				if actor.team ~= self.team then -- Skip own team
 					-- Check collision on this dude
 					if toolbox.actorsCollide(actor, self) then
 						self.collide(actor)
 						actor.collide(self)
+						if self.life <= 0 then
+							break
+						end
 					end
 				end
 			end
