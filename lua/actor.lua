@@ -30,7 +30,9 @@ makeActor = function (data, team)
 	self.frameMin = data.frameMin
 	self.frameMax = data.frameMax
 	self.frameNumber = self.frameMin
-	self.frame = images.frames[self.imageKey][self.frameNumber]
+	if self.imageKey ~= nil then
+		self.frame = images.frames[self.imageKey][self.frameNumber]
+	end
 	self.rotateWithTrajectory = data.rotateWithTrajectory
 
 	-- Methods ...

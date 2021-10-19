@@ -46,6 +46,11 @@ function love.load ()
 	gates[2] = makeActor(actorData.gate, 0)
 	gates[2].x = 24 * TILE_SIZE
 	gates[2].y = 0 * TILE_SIZE
+
+	-- Spawner
+	local spawner = makeActor(actorData.spawner, 2)
+	spawner.x = 4 * TILE_SIZE
+	spawner.y = 4 * TILE_SIZE
 end
 
 function love.draw ()
@@ -57,7 +62,9 @@ function love.draw ()
 	local halfTile = TILE_SIZE / 2
 	for key, actor in pairs(actors) do
 		-- love.graphics.rectangle("fill", actor.x, actor.y, TILE_SIZE, TILE_SIZE, 0, 0); -- DEBUG: draw rectangle behind sprite
-		love.graphics.draw(images.sources[actor.imageKey], actor.frame, actor.x + halfTile, actor.y + halfTile, actor.rotation, 1, 1, halfTile, halfTile)
+		if actor.imageKey ~= nil then
+			love.graphics.draw(images.sources[actor.imageKey], actor.frame, actor.x + halfTile, actor.y + halfTile, actor.rotation, 1, 1, halfTile, halfTile)
+		end
 	end
 
 	-- Paused notification

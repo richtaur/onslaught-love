@@ -1,5 +1,6 @@
 require("lua/behaviors/chaseBehavior")
 require("lua/behaviors/playerBehavior")
+require("lua/behaviors/spawnerBehavior")
 
 actorData = {}
 
@@ -59,3 +60,17 @@ actorData.gate.frameMax = 4
 actorData.gate.life = 1
 actorData.gate.speed = 0
 actorData.gate.speedMax = 0
+
+-- Spawner
+actorData.spawner = {}
+actorData.spawner.behavior = spawnerBehavior
+actorData.spawner.behaviorConfig = {}
+actorData.spawner.behaviorConfig.cooldownDuration = 3
+actorData.spawner.behaviorConfig.cooldownElapsed = actorData.player.behaviorConfig.cooldownDuration
+actorData.spawner.behaviorConfig.spawnActor = actorData.goblin
+actorData.spawner.collides = false
+actorData.spawner.frameMin = 0
+actorData.spawner.frameMax = 0
+actorData.spawner.life = 1
+actorData.spawner.speed = 0
+actorData.spawner.speedMax = 0
