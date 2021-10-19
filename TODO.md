@@ -1,7 +1,6 @@
 # TODO
 
-- prevent player from dying
-- add some default goblins
+- add some gameplay
 
-- save playMusic data
-	- load playMusic data
++ save playMusic data
+	+ load playMusic data

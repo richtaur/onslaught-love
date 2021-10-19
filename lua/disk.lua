@@ -1,58 +1,44 @@
+require("lua/TSerial")
+
 disk = {}
 
-function dump (object)
-	if type(object) == "table" then
-		local code = "{ "
-		for key, value in pairs(object) do
-			if type(key) ~= "number" then key = '"' .. key .. '"' end
-			code = code .. "[" .. key .. "] " .. dump(value) .. ","
-		end
-		return code .. "} "
-	else
-		return tostring(object)
-	end
-end
-
 disk.load = function ()
-	print("disk.load()")
+	print("disk.load(" .. SAVE_FILE .. ") ...")
 
 	local saveFileInfo = love.filesystem.getInfo(SAVE_FILE)
-	if saveFileInfo ~= nil then
-		gameData.values = require(SAVE_FILE)
-		print("file loaded: " .. SAVE_FILE)
+	if saveFileInfo == nil then
+		print("- file does not exist")
 	else
-		print("file does not exist: " .. SAVE_FILE)
+		print("+ file exists, loading ...")
+		local ok, chunk, result
+		ok, chunk = pcall(love.filesystem.load, SAVE_FILE)
+		if ok then
+			print("+ file loaded, executing chunk ...")
+			ok, result = pcall(chunk)
+			if ok then
+				print("+ chunk executed: " .. tostring(result))
+				gameData.values = chunk()
+			else
+				print("-chunk execute error: " .. tostring(result))
+			end
+		else
+			print("- filesystem.load failed: " .. tostring(chunk))
+		end
 	end
 end
 
 disk.save = function ()
-	print("disk.save()")
+	print("disk.save() ...")
 
 	local file, newFileError = love.filesystem.newFile(SAVE_FILE)
 	file:open("w")
-	local writeSuccess, writeError = file:write(dump(gameData.values))
+	local fileContents = "return " .. TSerial.pack(gameData.values)
+	local writeSuccess, writeError = file:write(fileContents)
 	file:close()
 
 	if writeSuccess then
-		print("write success")
+		print("+ write success")
 	else
-		print("write error: " .. writeError)
+		print("- write error: " .. writeError)
 	end
-
-	-- local file = love.filesystem.newFile(SAVE_FILE)
-	-- local opened, openError = file:open("w")
-	-- if opened then
-	-- 	print("opened")
-	-- else
-	-- 	print("NOT opened: " .. openError)
-	-- end
-
-	-- local success, error = file:write(dump(gameData.values))
-	-- file:close()
-
-	-- if success then
-	-- 	print("success")
-	-- else
-	-- 	print("error: " .. error)
-	-- end
 end
