@@ -29,5 +29,18 @@ images.load = function ()
 		end
 	end
 
+	-- Load gates and sprite sheet
+	images.sources.gates = love.graphics.newImage("images/sheet_gates.png")
+	images.frames.gates = {}
+	sheetIndex = 0
+	local gateSize = 64
+	for y = 0, 4 do
+		for x = 0, 3 do
+			images.frames.gates[sheetIndex] = love.graphics.newQuad(x * gateSize, y * gateSize, gateSize, gateSize, images.sources.gates:getDimensions())
+			sheetIndex = sheetIndex + 1
+		end
+	end
+
+	-- Load environments
 	images.sources.sewers = love.graphics.newImage("images/arena_02.png")
 end

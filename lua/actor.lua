@@ -35,7 +35,7 @@ makeActor = function (data, team)
 	-- Methods ...
 
 	self.collide = function (actor)
-		if self.damage > 0 then
+		if self.damage ~= nil and self.damage > 0 then
 			actor.takeDamage(self.damage)
 		end
 	end
@@ -55,14 +55,16 @@ makeActor = function (data, team)
 		end
 
 		-- Update animation frame
-		self.elapsedTime = self.elapsedTime + dt
-		if self.elapsedTime > self.animationInterval then
-			self.elapsedTime = 0
-			self.frameNumber = self.frameNumber + 1
-			if self.frameNumber > self.frameMax then
-				self.frameNumber = self.frameMin
+		if self.frameMin < self.frameMax then
+			self.elapsedTime = self.elapsedTime + dt
+			if self.elapsedTime > self.animationInterval then
+				self.elapsedTime = 0
+				self.frameNumber = self.frameNumber + 1
+				if self.frameNumber > self.frameMax then
+					self.frameNumber = self.frameMin
+				end
+				self.frame = images.frames[self.imageKey][self.frameNumber]
 			end
-			self.frame = images.frames[self.imageKey][self.frameNumber]
 		end
 
 		-- Update movement ...

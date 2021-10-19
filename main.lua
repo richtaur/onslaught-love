@@ -30,6 +30,9 @@ function love.load ()
 
 	-- Player
 	makeActor(actorData.player, TEAM_PLAYER)
+
+	-- Gates
+	makeActor(actorData.gate, 0)
 end
 
 function love.draw ()

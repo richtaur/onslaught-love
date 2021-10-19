@@ -46,3 +46,12 @@ actorData.sword.life = 1
 actorData.sword.rotateWithTrajectory = true
 actorData.sword.speed = 12
 actorData.sword.speedMax = 12
+
+-- Gate
+actorData.gate = {}
+actorData.gate.imageKey = "gates"
+actorData.gate.frameMin = 4
+actorData.gate.frameMax = 4
+actorData.gate.life = 1
+actorData.gate.speed = 0
+actorData.gate.speedMax = 0
