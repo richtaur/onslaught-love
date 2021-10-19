@@ -29,7 +29,9 @@ function love.load ()
 	end
 
 	-- Player
-	makeActor(actorData.player, TEAM_PLAYER)
+	local player = makeActor(actorData.player, TEAM_PLAYER)
+	player.x = (SCREEN_WIDTH / 2) - (TILE_SIZE / 2)
+	player.y = (SCREEN_HEIGHT / 2) - (TILE_SIZE * 3)
 
 	-- Gates
 	gates = {}
