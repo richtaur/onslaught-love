@@ -41,12 +41,7 @@ images.load = function ()
 		end
 	end
 
-	-- Load arena and sprite sheet
-	images.sources.arena = love.graphics.newImage("images/sheet_arena.png")
-	images.frames.arena = {}
-	images.frames.arena[0] = love.graphics.newQuad(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, images.sources.arena:getDimensions())
-	images.frames.arena[1] = love.graphics.newQuad(0, SCREEN_HEIGHT, SCREEN_WIDTH, 386, images.sources.arena:getDimensions())
-
+	-- Load arena ground and walls
 	images.sources.arenaGround = love.graphics.newImage("images/arena_ground.png")
 	images.sources.arenaWalls = love.graphics.newImage("images/arena_walls.png")
 end
