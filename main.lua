@@ -76,7 +76,7 @@ function love.draw ()
 
 	-- Controls / how to play text
 	local controlsText = "Click to spawn goblin\nPress M to toggle music\nPress SPACE to kill all goblins"
-	love.graphics.print(controlsText, MARGIN, SCREEN_HEIGHT - 100, 0, 1.5)
+	love.graphics.print(controlsText, MARGIN, SCREEN_HEIGHT - 56, 0, 1.25)
 end
 
 function love.keypressed (key)
@@ -112,7 +112,7 @@ function love.keypressed (key)
 
 		-- Kill all actors not in team 1
 		for key, actor in pairs(actors) do
-			if actor.team ~= 1 then
+			if actor.team == TEAM_MONSTER then
 				actors[key] = nil
 			end
 		end
