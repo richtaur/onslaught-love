@@ -1,4 +1,5 @@
-require("lua/sewersTilemap")
+require("lua/arenaTilemap")
+-- require("lua/sewersTilemap")
 
 tilemap = {}
 tilemap.width = 0
@@ -59,4 +60,4 @@ tilemap.checkTile = function (x, y)
 	return false
 end
 
-tilemap.load(sewersTilemap)
+tilemap.load(arenaTilemap)

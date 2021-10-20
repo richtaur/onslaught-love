@@ -25,7 +25,7 @@ function love.load ()
 
 	-- Music
 	if gameData.values.playMusic then
-		love.audio.play(sounds.sources.sewersMusic)
+		love.audio.play(sounds.sources.arenaMusic)
 	end
 
 	-- Player
@@ -36,16 +36,18 @@ function love.load ()
 	-- Gates
 	gates = {}
 	gates[1] = makeActor(actorData.gate, 0)
-	gates[1].x = 6 * TILE_SIZE
+	gates[1].x = 3 * TILE_SIZE
 	gates[1].y = 0 * TILE_SIZE
 
 	gates[2] = makeActor(actorData.gate, 0)
-	gates[2].x = 15 * TILE_SIZE
+	gates[2].x = 9 * TILE_SIZE
 	gates[2].y = 0 * TILE_SIZE
+	gates[2].frame = images.frames.gates[1] -- HACK: use different frame
 
-	gates[2] = makeActor(actorData.gate, 0)
-	gates[2].x = 24 * TILE_SIZE
-	gates[2].y = 0 * TILE_SIZE
+	gates[3] = makeActor(actorData.gate, 0)
+	gates[3].x = 15 * TILE_SIZE
+	gates[3].y = 0 * TILE_SIZE
+	gates[3].frame = images.frames.gates[2] -- HACK: use different frame
 
 	-- Spawner
 	local spawner = makeActor(actorData.spawner, 2)
@@ -55,8 +57,8 @@ end
 
 function love.draw ()
 	-- Draw environment
-	love.graphics.draw(images.sources.sewers, 0, 0)
-	-- tilemap.draw() -- DEBUG: show the tilemap
+	love.graphics.draw(images.sources.arenaGround, 0, 0)
+	love.graphics.draw(images.sources.arenaWalls, 0, 0)
 
 	-- Draw actors
 	local halfTile = TILE_SIZE / 2
@@ -83,11 +85,11 @@ function love.keypressed (key)
 		if paused then
 			paused = false
 			if gameData.values.playMusic then
-				love.audio.play(sounds.sources.sewersMusic)
+				love.audio.play(sounds.sources.arenaMusic)
 			end
 		else
 			paused = true
-			love.audio.pause(sounds.sources.sewersMusic)
+			love.audio.pause(sounds.sources.arenaMusic)
 		end
 	end
 
@@ -95,10 +97,10 @@ function love.keypressed (key)
 	if key == "m" and not paused then
 		if gameData.values.playMusic then
 			gameData.values.playMusic = false
-			love.audio.pause(sounds.sources.sewersMusic)
+			love.audio.pause(sounds.sources.arenaMusic)
 		else
 			gameData.values.playMusic = true
-			love.audio.play(sounds.sources.sewersMusic)
+			love.audio.play(sounds.sources.arenaMusic)
 		end
 		disk.save()
 	end
