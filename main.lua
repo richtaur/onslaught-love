@@ -86,8 +86,8 @@ function love.draw ()
 	end
 
 	-- Controls / how to play text
-	local controlsText = "Click to spawn goblin\nPress M to toggle music\nPress SPACE to kill all goblins"
-	love.graphics.print(controlsText, MARGIN, SCREEN_HEIGHT - 56, 0, 1.25)
+	-- local controlsText = "Click to spawn goblin\nPress M to toggle music\nPress SPACE to kill all goblins"
+	-- love.graphics.print(controlsText, MARGIN, SCREEN_HEIGHT - 56, 0, 1)
 
 	-- Render canvas to screen
 	local windowWidth, windowHeight = love.graphics.getDimensions()
