@@ -58,9 +58,9 @@ function love.load ()
 	gates[3].frame = images.frames.gates[2] -- HACK: use different frame
 
 	-- Spawner
-	local spawner = makeActor(actorData.spawner, 2)
-	spawner.x = 4 * TILE_SIZE
-	spawner.y = 4 * TILE_SIZE
+	-- local spawner = makeActor(actorData.spawner, 2)
+	-- spawner.x = 4 * TILE_SIZE
+	-- spawner.y = 4 * TILE_SIZE
 end
 
 function love.draw ()
@@ -76,13 +76,15 @@ function love.draw ()
 	for key, actor in pairs(actors) do
 		-- love.graphics.rectangle("fill", actor.x, actor.y, TILE_SIZE, TILE_SIZE, 0, 0); -- DEBUG: draw rectangle behind sprite
 		if actor.imageKey ~= nil then
-			love.graphics.draw(images.sources[actor.imageKey], actor.frame, actor.x + halfTile, actor.y + halfTile, actor.rotation, 1, 1, halfTile, halfTile)
+			local actorX = actor.x + halfTile
+			local actorY = actor.y + halfTile
+			love.graphics.draw(images.sources[actor.imageKey], actor.frame, actorX, actorY, actor.rotation, 1, 1, halfTile, halfTile)
 		end
 	end
 
 	-- Paused notification
 	if paused then
-		love.graphics.print("PAUSED", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0, 4)
+		love.graphics.print("PAUSED", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0, 2)
 	end
 
 	-- Controls / how to play text
