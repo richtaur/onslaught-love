@@ -16,6 +16,14 @@ paused = false
 keyIsDown = love.keyboard.isDown
 
 function love.load ()
+	-- TODO: look this up
+	-- window = {translateX = 40, translateY = 40, scale = 2, width = 1920, height = 1080}
+	-- love.window.setMode(width, height, {resizable=true, borderless=false})
+
+	-- Setup the offscreen canvas buffer
+	love.graphics.setDefaultFilter("nearest", "nearest")
+	canvas = love.graphics.newCanvas(SCREEN_WIDTH, SCREEN_HEIGHT)
+
 	-- Load assets
 	images.load()
 	sounds.load()
@@ -56,9 +64,12 @@ function love.load ()
 end
 
 function love.draw ()
+	love.graphics.setCanvas(canvas)
+
 	-- Draw environment
 	love.graphics.draw(images.sources.arenaGround, 0, 0)
 	love.graphics.draw(images.sources.arenaWalls, 0, 0)
+	-- tilemap.draw() -- DEBUG: show the tilemap
 
 	-- Draw actors
 	local halfTile = TILE_SIZE / 2
@@ -77,6 +88,13 @@ function love.draw ()
 	-- Controls / how to play text
 	local controlsText = "Click to spawn goblin\nPress M to toggle music\nPress SPACE to kill all goblins"
 	love.graphics.print(controlsText, MARGIN, SCREEN_HEIGHT - 56, 0, 1.25)
+
+	-- Render canvas to screen
+	local windowWidth, windowHeight = love.graphics.getDimensions()
+	local scaleX = windowWidth / SCREEN_WIDTH
+	local scaleY = windowHeight / SCREEN_HEIGHT
+	love.graphics.setCanvas()
+	love.graphics.draw(canvas, 0, 0, 0, scaleX, scaleY)
 end
 
 function love.keypressed (key)
