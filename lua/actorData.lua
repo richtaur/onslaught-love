@@ -1,3 +1,4 @@
+require("lua/behaviors/bounceBehavior")
 require("lua/behaviors/chaseBehavior")
 require("lua/behaviors/playerBehavior")
 require("lua/behaviors/spawnerBehavior")
@@ -37,6 +38,22 @@ actorData.goblin.life = 1
 actorData.goblin.speed = 2
 actorData.goblin.speedMax = 2
 
+-- Skull
+actorData.skull = {}
+actorData.skull.behavior = bounceBehavior
+actorData.skull.behaviorConfig = {}
+actorData.skull.behaviorConfig.proximityTrigger = 3 * TILE_SIZE
+actorData.skull.collides = true
+actorData.skull.frameMin = 22
+actorData.skull.frameMax = 22
+actorData.skull.damage = 1
+actorData.skull.damageFromTilemap = 0
+actorData.skull.damageSound = "monsterDamageSound"
+actorData.skull.imageKey = "charactersSmall"
+actorData.skull.life = 1
+actorData.skull.speed = 2
+actorData.skull.speedMax = 2
+
 -- Sword
 actorData.sword = {}
 actorData.sword.collides = true
@@ -65,7 +82,7 @@ actorData.gate.speedMax = 0
 actorData.spawner = {}
 actorData.spawner.behavior = spawnerBehavior
 actorData.spawner.behaviorConfig = {}
-actorData.spawner.behaviorConfig.cooldownDuration = 3
+actorData.spawner.behaviorConfig.cooldownDuration = 1
 actorData.spawner.behaviorConfig.cooldownElapsed = actorData.player.behaviorConfig.cooldownDuration
 actorData.spawner.behaviorConfig.spawnActor = actorData.goblin
 actorData.spawner.collides = false

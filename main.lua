@@ -58,9 +58,10 @@ function love.load ()
 	gates[3].frame = images.frames.gates[2] -- HACK: use different frame
 
 	-- Spawner
-	-- local spawner = makeActor(actorData.spawner, 2)
-	-- spawner.x = 4 * TILE_SIZE
-	-- spawner.y = 4 * TILE_SIZE
+	local spawner = makeActor(actorData.spawner, 2)
+	-- spawner.behaviorConfig.spawnActor = actorData.skull
+	spawner.x = 4 * TILE_SIZE
+	spawner.y = 4 * TILE_SIZE
 end
 
 function love.draw ()
@@ -155,7 +156,7 @@ function love.mousepressed (x, y, button, istouch, presses)
 	local tileY = math.floor(y / TILE_SIZE)
 	print("Clicked tile: " .. tileX .. ", " .. tileY)
 
-	-- Spawn a goblin at this tile
+	-- Spawn a monster at this tile
 	local actor = makeActor(actorData.goblin, TEAM_MONSTER)
 	actor.x = tileX * TILE_SIZE
 	actor.y = tileY * TILE_SIZE
