@@ -91,12 +91,23 @@ function love.draw ()
 	-- local controlsText = "Click to spawn goblin\nPress M to toggle music\nPress SPACE to kill all goblins"
 	-- love.graphics.print(controlsText, MARGIN, SCREEN_HEIGHT - 56, 0, 1)
 
-	-- Render canvas to screen
+	-- Calculate how the canvas buffer should be drawn to maintain aspect ratio
 	local windowWidth, windowHeight = love.graphics.getDimensions()
 	local scaleX = windowWidth / SCREEN_WIDTH
 	local scaleY = windowHeight / SCREEN_HEIGHT
+	local screenRatioX = SCREEN_WIDTH / SCREEN_HEIGHT
+	local screenRatioY = SCREEN_HEIGHT / SCREEN_WIDTH
+	if scaleX > scaleY then
+		scaleX = screenRatioX * (scaleY * screenRatioY)
+	elseif scaleY > scaleX then
+		scaleY = screenRatioY * (scaleX * screenRatioX)
+	end
+
+	-- Render canvas to screen
 	love.graphics.setCanvas()
-	love.graphics.draw(canvas, 0, 0, 0, scaleX, scaleY)
+	local canvasX = (windowWidth - (SCREEN_WIDTH * scaleX)) / 2
+	local canvasY = (windowHeight - (SCREEN_HEIGHT * scaleY)) / 2
+	love.graphics.draw(canvas, canvasX, canvasY, 0, scaleX, scaleY)
 end
 
 function love.keypressed (key)

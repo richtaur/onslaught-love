@@ -1,7 +1,6 @@
 # TODO
 
-- fix scaling when ratio doesn't match
-	- make everything behind it black
+- fix click offset
 - order sprites
 	- draw gates over goblins
 
